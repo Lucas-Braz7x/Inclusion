@@ -11,6 +11,6 @@ descrição do projeto
   - [Ana](https://github.com/crisraele)
   - [Leonardo](https://github.com/leonardoemerson)
   - [Lucas](https://github.com/Lucas-Braz7x)
-  - [Vitória]()
-
+  -[Victória ] (https://github.com/vicalves18)
+  
 # Link da aplicação:
