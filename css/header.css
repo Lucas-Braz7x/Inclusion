@@ -19,7 +19,7 @@ a:hover {
 }
 
 
-#preloader { // Os preloader são animações que deixam a página mais agradável enquanto o usuário aguarda o carregamento ...
+#preloader { /*Os preloader são animações que deixam a página mais agradável enquanto o usuário aguarda o carregamento ...*/
   position: fixed;
   top: 0;
   left: 0;
@@ -54,7 +54,7 @@ a:hover {
   }
 }
 
-@keyframes animate-preloader { //é utilizado para demarcar a primeira e a última imagem de uma sequência simples de movimento dentro de uma animação.Quadro-chave.
+@keyframes animate-preloader { /*é utilizado para demarcar a primeira e a última imagem de uma sequência simples de movimento dentro de uma animação.Quadro-chave.*/
   0% {
     transform: rotate(0deg);
   }
