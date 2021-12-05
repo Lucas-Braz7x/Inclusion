@@ -1,0 +1,90 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main{
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.headerFormulario{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  margin: 20px auto;
+}
+
+.headerFormulario h2{
+  width: 80%;
+}
+
+.formulario{
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 450px;
+}
+
+.formulario div.form-group{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.formulario div.form-group{
+  margin-right: 10px;
+}
+
+
+.formularioConteudo{
+  width: auto;
+  border: 1px solid transparent;
+  padding: 20px 40px;
+  box-shadow: 0 0 20px rgba(0,0,0, .4);
+}
+
+#senha,
+#confirmacaoSenha,
+#telefone,
+#email,
+#nome{
+  width: 330px;
+}
+
+
+#dataNascimentoDia{
+  width: 80px;
+}
+
+#dataNascimentoAno{
+  width: 100px;
+}
+
+#uf,
+#cep,
+#numero{
+  width: 95px;
+}
+.login,
+.botoes{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.login{
+  font-size: 1.125rem;
+  margin-top: 10px;
+}
+.login a{
+  color: #47b2e4;
+}
