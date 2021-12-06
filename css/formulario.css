@@ -44,6 +44,10 @@ main{
   margin-right: 10px;
 }
 
+.formulario div label{
+  font-weight: bold;
+}
+
 
 .formularioConteudo{
   width: auto;
@@ -81,10 +85,76 @@ main{
   align-items: center;
   gap: 10px;
 }
+
+button,
+.botoes input{
+  font-weight: bold;
+}
+
+.botoes button,
+.botoes input:nth-child(1){
+  background: rgba(0,0,200, .8);
+  transition: .5s;
+}
+.botoes button,
+.botoes input:nth-child(1):hover{
+  filter: brightness(1.5);
+  
+}
+.inscrever button,
+.botoes input:nth-child(2){
+  color: rgba(0,0,200, .8);
+  transition: .5s;
+}
+
+.inscrever button,
+.botoes input:nth-child(2):hover{
+  background: rgba(0,0,200, .8);
+  color: #ffffff;
+}
 .login{
   font-size: 1.125rem;
   margin-top: 10px;
 }
 .login a{
-  color: #47b2e4;
+  color: rgba(0,0,200, .8);
+  font-weight: bold;
+  transition: text-decoration .5s;
 }
+.login a:hover{
+  text-decoration: underline rgba(0,0,200, 1);
+}
+
+/*Formulário de login*/
+.senhaEsquecida{
+  margin-top: 10px;
+  font-size: 0.875rem;
+  
+}
+
+.senhaEsquecida a{
+  text-decoration: underline;
+  color: rgba(0,0,200, .8);
+  font-weight: bold;
+}
+.senhaEsquecida a:hover{
+  
+  text-decoration: none;
+}
+
+.increver{
+  width: 100%;
+  margin: 10px 0;
+  border-top: 1px solid #cccccc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.increver p{
+  margin-top: 10px;
+  font-weight: bold;
+}
+
