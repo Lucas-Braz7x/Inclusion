@@ -2,9 +2,14 @@
 
 descrição do projeto
 
+
+
 # tecnologias:
 
-# imagens
+# Como rodar:
+
+  - Faça um clone do projeto baixando o `zip` ou rode `git clone` (+ url do projeto)
+  - Caso já tenha o projeto rode `git pull` para ter a versão mais atualizada
 
 # Contribuidores: 
 
