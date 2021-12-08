@@ -24,8 +24,8 @@
 
       <div class="headerFormulario">
         <p>INCLUSION - LOGO</p>
-        <h1> Bem vindo ao Inclusion!</h1>
-        <h2> Preencha o formulário abaixo para ajudar quem realmente precisa!</h2>
+        <h1> Bem-vindo ao Inclusion!</h1>
+        <h2> Faça login para ajudar quem realmente precisa!</h2>
       </div>
 
       <form class="formulario container-fluid">
@@ -52,7 +52,7 @@
           <div class="senhaEsquecida">
             <a href="recuperacaoSenha.html">Esqueceu a sua senha?</a>
           </div>
-          <div class="increver">
+          <div class="inscrever">
             <p>Não tem uma conta?</p>
             <button type="submit" class="btn btn-outline-primary" aria-label="Inscrever no Inclusion"
               aria-describedby="Inscrever na plataforma inclusion">Inscreva-se</button>
@@ -61,6 +61,18 @@
       </form>
     </div>
   </main>
+
+  <!-- Bonecão da acessibilidade -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
 </body>
 
 </html>
