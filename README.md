@@ -2,9 +2,15 @@
 
 descrição do projeto
 
+asdasdasdasd
+
 # tecnologias:
 
-# imagens
+# Como rodar:
+
+  - Faça um clone do projeto baixando o `zip` ou rode `git clone` (+ url do projeto)
+  - Caso já tenha o projeto rode `git pull` para ter a versão mais atualizada
+  - OBS: Os comando citados necessitam do [git bash](https://git-scm.com/downloads)
 
 # Contribuidores: 
 
@@ -15,3 +21,4 @@ descrição do projeto
 
   
 # Link da aplicação:
+sadsd

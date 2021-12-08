@@ -13,3 +13,6 @@ const mascaraTelefone = (valor) => {
   console.log(tel.value.replace(/[^\d]+/g, ''))
 }
 
+
+// sahdgasdjhsagdsavdg
+
