@@ -91,26 +91,29 @@ button,
   font-weight: bold;
 }
 
-.botoes button,
+.botoes >button,
 .botoes input:nth-child(1){
   background: rgba(0,0,200, .8);
   transition: .5s;
 }
-.botoes button,
+.botoes >button,
 .botoes input:nth-child(1):hover{
   filter: brightness(1.5);
   
 }
-.inscrever button,
+
+.inscrever > button,
 .botoes input:nth-child(2){
   color: rgba(0,0,200, .8);
+  font-weight: bold;
   transition: .5s;
 }
 
-.inscrever button,
+.inscrever > button:hover,
 .botoes input:nth-child(2):hover{
   background: rgba(0,0,200, .8);
   color: #ffffff;
+  
 }
 .login{
   font-size: 1.125rem;
@@ -142,7 +145,7 @@ button,
   text-decoration: none;
 }
 
-.increver{
+.inscrever{
   width: 100%;
   margin: 10px 0;
   border-top: 1px solid #cccccc;
@@ -153,12 +156,7 @@ button,
   flex-direction: column;
 }
 
-.increver p{
+.inscrever p{
   margin-top: 10px;
   font-weight: bold;
 }
-
-.inscrever button{
-  
-}
-
