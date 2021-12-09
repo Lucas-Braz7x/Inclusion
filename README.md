@@ -6,7 +6,11 @@ descrição do projeto
 
 asdasdasdasd
 
-# tecnologias:
+# Planejamento: 
+  
+  - [Trello](https://trello.com/b/FvJG5kpV/inclusion)
+
+# Tecnologias:
 
 # Como rodar:
 
