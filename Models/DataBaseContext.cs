@@ -5,6 +5,7 @@ namespace Inclusion.Models
   public class DataBaseContext : DbContext
   {
     public DbSet<Doador> Doadores { get; set; }
+    public DbSet<Ong> Ongs { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

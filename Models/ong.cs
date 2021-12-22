@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Inclusion.Models
 {
-  public class Doador : Dados
+  public class Ong : Dados
   {
     [Key]
     [Column(Order = 1)]
@@ -11,8 +11,7 @@ namespace Inclusion.Models
     public int id { get; set; }
 
     [Required]
-    [Display(Name = "nome")]
-    public string nomeDoador { get; set; }
+    public string nomeOng { get; set; }
 
   }
 }
