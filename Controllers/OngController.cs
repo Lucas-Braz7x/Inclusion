@@ -53,7 +53,7 @@ namespace Inclusion.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nomeOng,email,idade,telefone,endereco,estado,senha")] Ong ong)
+        public async Task<IActionResult> Create([Bind("id,nomeOng,email,telefone,endereco,estado,senha")] Ong ong)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Inclusion.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nomeOng,email,idade,telefone,endereco,estado,senha")] Ong ong)
+        public async Task<IActionResult> Edit(int id, [Bind("id,nomeOng,email,telefone,endereco,estado,senha")] Ong ong)
         {
             if (id != ong.id)
             {
