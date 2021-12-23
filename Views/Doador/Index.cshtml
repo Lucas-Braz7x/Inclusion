@@ -1,5 +1,20 @@
 @model IEnumerable<Inclusion.Models.Doador>
 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -7,10 +22,10 @@
                 @Html.DisplayNameFor(model => model.nomeDoador)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.email)
+                @Html.DisplayNameFor(model => model.idade)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.idade)
+                @Html.DisplayNameFor(model => model.email)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.telefone)
@@ -34,10 +49,10 @@
                 @Html.DisplayFor(modelItem => item.nomeDoador)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.email)
+                @Html.DisplayFor(modelItem => item.idade)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idade)
+                @Html.DisplayFor(modelItem => item.email)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.telefone)
@@ -60,3 +75,5 @@
 }
     </tbody>
 </table>
+</body>
+</html>

@@ -14,5 +14,8 @@ namespace Inclusion.Models
     [Display(Name = "nome")]
     public string nomeDoador { get; set; }
 
+    [Required]
+    public int idade { get; set; }
+
   }
 }

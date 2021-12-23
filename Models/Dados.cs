@@ -8,9 +8,6 @@ namespace Inclusion.Models
     public string email { get; set; }
 
     [Required]
-    public int idade { get; set; }
-
-    [Required]
     public string telefone { get; set; }
 
     [Required]
