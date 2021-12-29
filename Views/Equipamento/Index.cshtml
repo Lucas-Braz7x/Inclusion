@@ -1,0 +1,61 @@
+@model IEnumerable<Inclusion.Models.Equipamento>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nomeEquipamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.imgUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.doador)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomeEquipamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imgUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doador.email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

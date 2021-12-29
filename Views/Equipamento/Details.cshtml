@@ -1,0 +1,51 @@
+@model Inclusion.Models.Equipamento
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Equipamento</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nomeEquipamento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nomeEquipamento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imgUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imgUrl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.doador)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.doador.email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>
