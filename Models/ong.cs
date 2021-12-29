@@ -11,6 +11,7 @@ namespace Inclusion.Models
     public int id { get; set; }
 
     [Required]
+    [StringLength(50, MinimumLength = 5, ErrorMessage = "O nome da ONG deve conter entre 5 e 50 caracteres.")]
     public string nomeOng { get; set; }
 
   }

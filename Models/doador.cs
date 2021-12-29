@@ -12,6 +12,7 @@ namespace Inclusion.Models
 
     [Required]
     [Display(Name = "nome")]
+    [StringLength(50, MinimumLength = 5, ErrorMessage = "O nome do doador deve conter entre 5 e 50 caracteres.")]
     public string nomeDoador { get; set; }
 
     [Required]

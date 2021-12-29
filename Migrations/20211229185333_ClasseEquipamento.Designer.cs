@@ -3,14 +3,16 @@ using Inclusion.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Inclusion.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20211229185333_ClasseEquipamento")]
+    partial class ClasseEquipamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,10 +79,6 @@ namespace Inclusion.Migrations
 
                     b.Property<int>("doadorId")
                         .HasColumnType("int");
-
-                    b.Property<string>("imgUrl")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("nomeEquipamento")
                         .IsRequired()
