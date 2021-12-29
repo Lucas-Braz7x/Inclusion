@@ -1,54 +1,125 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Inclusion</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inclusion</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Doador" asp-action="Create">Cadastro Doador</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Ong" asp-action="Create">Cadastro ong</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Inclusion - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - Inclusion</title>
+
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/site.css" />
+
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="~/assets/iconetitle.png" rel="icon">
+  <link href="~/assets/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="~/lib/vendor/aos/aos.css" rel="stylesheet">
+  <link href="~/lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="~/lib/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="~/lib/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="~/lib/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="~/lib/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="~/lib/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="~/css/style.css" rel="stylesheet">
+  <link href="~/css/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="index.html">INCLUSION</a></h1>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li>
+            <a class="nav-link scrollto active" asp-area="" asp-controller="Home" asp-action="Index">Página
+              Inicial</a>
+          </li>
+
+          <li><a class="nav-link scrollto" asp-area="" asp-controller="Equipamento" asp-action="Index">Equipamentos</a>
+          </li>
+
+          <li>
+            <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Time">Time</a>
+          </li>
+
+          <li>
+            <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Contatos">Contatos</a>
+          </li>
+          <li><a class="getstarted scrollto" asp-area="" asp-controller="Doador" asp-action="Create">Fazer Doação</a>
+          </li>
+          <li><a class="getstarted scrollto" asp-area="" asp-controller="Ong" asp-action="Create">Ongs</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header>
+
+  <div class="">
+    <main role="main" class="pb-3">
+      @RenderBody()
+    </main>
+  </div>
+
+  <footer id="myFooter">
+    <div class="container">
+      <ul>
+        <li><a href="">Sobre</a></li>
+        <li><a href="">Serviços</a></li>
+        <li><a href="">Equipamentos</a></li>
+        <li><a href="">Ong Amigas</a></li>
+        <li><a href="">Contato</a></li>
+      </ul>
+      <p class="footer-copyright">© 2021 Copyright - Squad 42</p>
+    </div>
+    <div class="footer-social">
+      <a href="" class="social-icons"><i class="fa fa-facebook"></i></a>
+      <a href="" class="social-icons"><i class="fa fa-instagram"></i></a>
+      <a href="" class="social-icons"><i class="fa fa-twitter"></i></a>
+    </div>
+  </footer>
+
+  <!-- Tradutor de Libras-->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <!--End Tradutor de Libras-->
+
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/site.js" asp-append-version="true"></script>
+  <script src="~/lib/vendor/aos/aos.js"></script>
+  <script src="~/lib/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="~/lib/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="~/lib/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="~/lib/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="~/lib/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="~/lib/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="~/js/main.js"></script>
+  @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
