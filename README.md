@@ -24,6 +24,7 @@ asdasdasdasd
   - [Leonardo](https://github.com/leonardoemerson)
   - [Lucas](https://github.com/Lucas-Braz7x)
   - [Victória](https://github.com/vicalves18)
+  - [Everton](https://github.com/evertonvinicius)
 
   
 # Link da aplicação:
