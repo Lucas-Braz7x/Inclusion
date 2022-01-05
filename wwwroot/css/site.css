@@ -1,4 +1,10 @@
-﻿a.navbar-brand {
+﻿*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
@@ -6,6 +12,7 @@
 
 a {
   color: #0366d6;
+  text-decoration: none;
 }
 
 .btn-primary {

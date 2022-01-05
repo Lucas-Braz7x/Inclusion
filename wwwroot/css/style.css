@@ -16,11 +16,19 @@ body {
 a {
   color: #47b2e4;
   text-decoration: none;
+  list-style: none;
 }
 
+li a{
+  text-decoration: none;
+}
+
+img:hover{
+  cursor: pointer;
+}
 a:hover {
   color: #73c5eb;
-  text-decoration: none;
+  cursor: pointer;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -73,6 +81,10 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(360deg);
   }
 }
+
+.team, .portfolio, .contact{
+  padding: 100px 0 10px 0;
+}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -109,7 +121,10 @@ h1, h2, h3, h4, h5, h6 {
 #header {
   transition: all 0.5s;
   z-index: 997;
-  padding: 15px 0;
+  padding: 10px 0;
+  background: rgba(55, 81, 126, 1);
+
+
 }
 #header.header-scrolled, #header.header-inner-pages {
   background: rgba(40, 58, 90, 0.9);
@@ -118,7 +133,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 30px;
   margin: 0;
   padding: 0;
-  line-height: 1;
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -128,6 +142,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 #header .logo img {
   max-height: 40px;
+}
+
+.logo img{
+  width: 100px;
 }
 
 /*--------------------------------------------------------------
@@ -1207,9 +1225,6 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
-.contact, .portfolio, .team {
-  margin-top: 30px;
-}
 .contact .info {
   border-top: 3px solid #47b2e4;
   border-bottom: 3px solid #47b2e4;
