@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@ViewData["Title"] - Inclusion</title>
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="~/css/site.css" />
+  <link rel="stylesheet" href="~/css/header.css" />
 
 
   <meta content="" name="description">
@@ -38,9 +40,11 @@
 </head>
 
 <body>
-  <header id="header" class="fixed-top ">
+  <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="index.html">INCLUSION</a></h1>
+      <h1 class="logo me-auto"><a asp-area="" asp-controller="Home" asp-action="Index">
+          <img src="~/assets/INCLUSION_logo.png" alt="Imagem da logo inclusion">
+        </a></h1>
       <nav id="navbar" class="navbar">
         <ul>
           <li>
@@ -122,4 +126,5 @@
   <script src="~/js/site.js" asp-append-version="true"></script>
   @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

@@ -18,6 +18,9 @@ a:hover {
   font-family: "Jost", sans-serif;
 }
 
+header, #header{
+  background: rgba(55, 81, 126, .98);
+}
 
 #preloader { /*Os preloader são animações que deixam a página mais agradável enquanto o usuário aguarda o carregamento ...*/
   position: fixed;
@@ -105,6 +108,7 @@ a:hover {
 }
 #header.header-scrolled, #header.header-inner-pages {
   background: rgba(40, 58, 90, 0.9);
+  box-shadow: 0 0 5px #000;
 }
 #header .logo {
   font-size: 30px;
