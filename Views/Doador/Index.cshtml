@@ -1,79 +1,24 @@
 @model IEnumerable<Inclusion.Models.Doador>
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nomeDoador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.idade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.endereco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.senha)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nomeDoador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.idade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.endereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.senha)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</body>
-</html>
+<div class="doadores m-4">
+  @foreach (var item in Model)
+  {
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Nome: @Html.DisplayFor(modelItem => item.nomeDoador)
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Email: @Html.DisplayFor(modelItem => item.email)
+        </h6>
+        <p class="card-text">Telefone: @Html.DisplayFor(modelItem => item.telefone)</p>
+        <p class="card-text">Endereço: @Html.DisplayFor(modelItem => item.endereco) - @Html.DisplayFor(modelItem =>
+        item.estado)</p>
+        <a class="card-link links" asp-action="Edit" asp-route-id="@item.id">
+          <img src="~/assets/pencil-square.svg" alt="Editar">
+        </a>
+        <a class="card-link links" asp-action="Delete" asp-route-id="@item.id">
+          <img src="~/assets/trash.svg" alt="Excluir">
+        </a>
+      </div>
+    </div>
+  }
+</div>

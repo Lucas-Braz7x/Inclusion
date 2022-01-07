@@ -21,9 +21,7 @@ a {
   border-color: #1861ac;
 }
 #header{
-  background-color: #37517e;
-  opacity: 0.5;
-  
+  background-color: #37517e;  
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -66,6 +64,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
 /* .footer {
   position: absolute;
   bottom: 0;
@@ -74,3 +73,7 @@ body {
   line-height: 60px; 
 }
  */
+
+ .conteudo{
+   height: 100vh;
+ }

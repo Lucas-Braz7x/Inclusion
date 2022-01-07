@@ -1,6 +1,6 @@
 @model Inclusion.Models.Ong
 
-<div class="cadastro-ong m-4 d-flex align-items-center flex-column">
+<div class="cadastro-ong m-4 d-flex justify-content-center">
   <div class="row col-md-4 col-lg-6 col-xl-7">
     <div class="cadastro-doador-infos">
       <img src="~/assets/INCLUSION_logo.png" alt="Imagem da logo inclusion">
@@ -32,7 +32,7 @@
         </div>
         <div class="form-group dados">
           <label asp-for="estado" class="control-label">Estado</label>
-          <input asp-for="estado" placeholder="Digite o estado" class="form-control" />
+          <input asp-for="estado" placeholder="Digite o estado da ONG" class="form-control" />
           <span asp-validation-for="estado" class="text-danger"></span>
         </div>
         <div class="form-group dados">
@@ -45,9 +45,8 @@
         </div>
       </form>
     </div>
-  </div>
-
-  <div class="d-flex justify-content-start">
-    <a asp-area="" asp-controller="Home" asp-action="Index">voltar</a>
+    <div>
+      <a asp-area="" asp-controller="Home" asp-action="Index">voltar</a>
+    </div>
   </div>
 </div>
