@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="~/css/header.css" />
   <link rel="stylesheet" href="~/css/formulario.css" />
+  <link rel="stylesheet" href="~/css/ongs.css" />
   <link href="~/css/style.css" rel="stylesheet">
   <link href="~/css/footer.css" rel="stylesheet">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -41,60 +42,64 @@
 </head>
 
 <body>
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a asp-area="" asp-controller="Home" asp-action="Index">
-          <img src="~/assets/INCLUSION_logo.png" alt="Imagem da logo inclusion">
-        </a></h1>
-      <nav id="navbar" class="navbar">
+  <div class="conteudo">
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><a asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="~/assets/INCLUSION_logo.png" alt="Imagem da logo inclusion">
+          </a></h1>
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Index">Página
+                Inicial</a>
+            </li>
+
+            <li><a class="nav-link scrollto" asp-area="" asp-controller="Equipamento"
+                asp-action="Index">Equipamentos</a>
+            </li>
+
+            <li>
+              <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Time">Time</a>
+            </li>
+
+            <li>
+              <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Contatos">Contatos</a>
+            </li>
+            <li><a class="getstarted scrollto" asp-area="" asp-controller="Doador" asp-action="Create">Fazer Doação</a>
+            </li>
+            <li><a class="getstarted scrollto" asp-area="" asp-controller="Ong" asp-action="Create">Ongs</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+      </div>
+    </header>
+
+    <div class="">
+      <main role="main" class="pb-3">
+        @RenderBody()
+      </main>
+    </div>
+
+    <footer id="myFooter">
+      <div class="container">
         <ul>
-          <li>
-            <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Index">Página
-              Inicial</a>
-          </li>
-
-          <li><a class="nav-link scrollto" asp-area="" asp-controller="Equipamento" asp-action="Index">Equipamentos</a>
-          </li>
-
-          <li>
-            <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Time">Time</a>
-          </li>
-
-          <li>
-            <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Contatos">Contatos</a>
-          </li>
-          <li><a class="getstarted scrollto" asp-area="" asp-controller="Doador" asp-action="Create">Fazer Doação</a>
-          </li>
-          <li><a class="getstarted scrollto" asp-area="" asp-controller="Ong" asp-action="Create">Ongs</a></li>
+          <li><a asp-area="" asp-controller="Home" asp-action="Index">Sobre</a></li>
+          <li><a asp-area="" asp-controller="Home" asp-action="Time">Time</a></li>
+          <li><a asp-area="" asp-controller="Equipamento" asp-action="Index">Equipamentos</a></li>
+          <li><a asp-area="" asp-controller="Ong" asp-action="Index">Ong Amigas</a></li>
+          <li><a asp-area="" asp-controller="Doador" asp-action="Index">Doadores</a></li>
+          <li><a asp-area="" asp-controller="Home" asp-action="Contatos">Contato</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-    </div>
-  </header>
-
-  <div class="">
-    <main role="main" class="pb-3">
-      @RenderBody()
-    </main>
+        <p class="footer-copyright">© 2021 Copyright - Squad 42</p>
+      </div>
+      <div class="footer-social">
+        <a href="#" class="social-icons"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="social-icons"><i class="fa fa-instagram"></i></a>
+        <a href="#" class="social-icons"><i class="fa fa-twitter"></i></a>
+      </div>
+    </footer>
   </div>
-
-  <footer id="myFooter">
-    <div class="container">
-      <ul>
-        <li><a href="">Sobre</a></li>
-        <li><a href="">Serviços</a></li>
-        <li><a href="">Equipamentos</a></li>
-        <li><a asp-area="" asp-controller="Ong" asp-action="Index">Ong Amigas</a></li>
-        <li><a href="">Contato</a></li>
-      </ul>
-      <p class="footer-copyright">© 2021 Copyright - Squad 42</p>
-    </div>
-    <div class="footer-social">
-      <a href="#" class="social-icons"><i class="fa fa-facebook"></i></a>
-      <a href="#" class="social-icons"><i class="fa fa-instagram"></i></a>
-      <a href="#" class="social-icons"><i class="fa fa-twitter"></i></a>
-    </div>
-  </footer>
 
   <!-- Tradutor de Libras-->
   <div vw class="enabled">
