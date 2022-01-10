@@ -1,3 +1,5 @@
+@model IEnumerable<Inclusion.Models.Equipamento>
+
 <section id="portfolio" class="portfolio">
   <div class="container">
 
@@ -13,6 +15,7 @@
       <li data-filter=".filter-motor">Motor</li>
       <li data-filter=".filter-cognitivo">Cognitivo</li>
       <li data-filter=".filter-neurologico">Neurológico</li>
+      <li data-filter=".filter-new">Recentes</li>
     </ul>
 
     <div class="row portfolio-container">
@@ -118,6 +121,31 @@
             class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
           <a href="#" class="details-link" title="Garanta já"><i class="bx bx-link"></i></a>
         </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-new">
+        @foreach (var item in Model)
+        {
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Equipamento: @Html.DisplayFor(modelItem => item.nomeEquipamento)
+              </h5>
+              <h6 class="card-subtitle mb-2 text-muted">Estado: @Html.DisplayFor(modelItem => item.descricao)
+              </h6>
+              <p class="card-text">Doador: <a asp-area="" asp-controller="Doador"
+                asp-action="Index">@Html.DisplayFor(modelItem => item.doador.nomeDoador)</a></p>
+              <a class="card-link links" asp-action="Edit" asp-route-id="@item.id">
+                <img src="~/assets/pencil-square.svg" alt="Editar">
+              </a>
+              <a class="card-link links" asp-action="Delete" asp-route-id="@item.id">
+                <img src="~/assets/trash.svg" alt="Excluir">
+              </a>
+            </div>
+          </div>
+        }
+          <p>
+            <a asp-area="" asp-controller="Equipamento" asp-action="Create">Cadastre um equipamento</a>
+          </p>
       </div>
 
     </div>
