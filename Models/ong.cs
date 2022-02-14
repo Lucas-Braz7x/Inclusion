@@ -12,12 +12,12 @@ namespace Inclusion.Models
 
     [StringLength(60, MinimumLength = 7)]
     [Required]
-    public new string email { get; set; }
+    public string email { get; set; }
 
     [RegularExpression(@"^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$")]
     [Required]
     [StringLength(20)]
-    public new string telefone { get; set; }
+    public string telefone { get; set; }
 
     [Required]
     [StringLength(50, MinimumLength = 5, ErrorMessage = "O nome da ONG deve conter entre 5 e 50 caracteres.")]
