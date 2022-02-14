@@ -125,6 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 997;
   padding: 10px 0;
   background: rgba(55, 81, 126, 1);
+  height: 70px;
 
 
 }
@@ -147,6 +148,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo img{
+  position: absolute;
+  top: 22px;
+  height: 25px;
   width: 100px;
 }
 
@@ -292,6 +296,7 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(40, 58, 90, 0.9);
   transition: 0.3s;
   z-index: 999;
+  height: 400px;
 }
 
 .navbar-mobile .mobile-nav-toggle {
@@ -301,7 +306,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-mobile ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 55px;
   right: 15px;
@@ -309,15 +317,14 @@ h1, h2, h3, h4, h5, h6 {
   left: 15px;
   padding: 10px 0;
   border-radius: 10px;
-  background-color: #fff;
-  overflow-y: auto;
+  overflow-y: hidden;
   transition: 0.3s;
 }
 
 .navbar-mobile a {
   padding: 10px 20px;
   font-size: 15px;
-  color: #37517e;
+  color: #fff;
 }
 
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
@@ -326,7 +333,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-mobile .getstarted {
   margin: 15px;
-  color: #37517e;
+  color: #fff;
 }
 
 .navbar-mobile {
