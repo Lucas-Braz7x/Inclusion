@@ -437,11 +437,13 @@ h1, h2, h3, h4, h5, h6 {
   }
   #hero .hero-img img {
     width: 70%;
+    
   }
 }
 @media (max-width: 575px) {
   #hero .hero-img img {
     width: 80%;
+    height: auto;
   }
   #hero .btn-get-started {
     font-size: 16px;
@@ -535,7 +537,7 @@ section {
 }
 @media (max-width: 768px) {
   .cliens img {
-    max-width: 40%;
+    max-width: 30%;
   }
 }
 

@@ -11,7 +11,7 @@ namespace Inclusion.Models
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      /*optionsBuilder.UseSqlServer(connectionString: "Data Source=DESKTOP-3PLJOV1;Initial Catalog=inclusion; Integrated Security=true;");*/
+      /*optionsBuilder.UseSqlServer(connectionString: "Data Source=PC-VIC-MSQLEXPRESS;Initial Catalog=inclusion; Integrated Security=true;");*/
       optionsBuilder.UseSqlServer(connectionString: "Server=tcp:inclusiondb.database.windows.net,1433;Initial Catalog=Inclusion;Persist Security Info=False;User ID=Inclusion;Password=Squad42!@#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
     }
   }

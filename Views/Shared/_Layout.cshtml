@@ -49,29 +49,36 @@
         <h1 class="logo me-auto"><a asp-area="" asp-controller="Home" asp-action="Index">
             <img src="~/assets/INCLUSION_logo.png" alt="Imagem da logo inclusion">
           </a></h1>
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li>
-              <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Index">Página
-                Inicial</a>
-            </li>
+        <nav  class="navbar navbar-expand-lg">
+          <div class="container-fluid" >
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active " aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Página
+                    Inicial</a>
+                </li>
 
-            <li><a class="nav-link scrollto" asp-area="" asp-controller="Equipamento"
-                asp-action="Index">Equipamentos</a>
-            </li>
+                <li class="nav-item"><a class="nav-link " asp-area="" asp-controller="Equipamento"
+                    asp-action="Index">Equipamentos</a>
+                </li>
 
-            <li>
-              <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Time">Time</a>
-            </li>
+                <li class="nav-item">
+                  <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Time">Time</a>
+                </li>
 
-            <li>
-              <a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Contatos">Contatos</a>
-            </li>
-            <li><a class="getstarted scrollto" asp-area="" asp-controller="Doador" asp-action="Create">Fazer Doação</a>
-            </li>
-            <li><a class="getstarted scrollto" asp-area="" asp-controller="Ong" asp-action="Create">Ongs</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
+                <li class="nav-item">
+                  <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Contatos">Contatos</a>
+                </li>
+                <li class="nav-item"><a class="getstarted " asp-area="" asp-controller="Doador" asp-action="Create">Fazer Doação</a>
+                </li>
+                <li><a class="getstarted " asp-area="" asp-controller="Ong" asp-action="Create">Ongs</a></li>
+              </ul>
+              <i class="bi bi-list mobile-nav-toggle"></i>
+            </div>
+          </div>
         </nav><!-- .navbar -->
       </div>
     </header>
