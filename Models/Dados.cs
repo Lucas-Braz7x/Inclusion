@@ -4,13 +4,14 @@ namespace Inclusion.Models
 {
   public abstract class Dados
   {
+    [StringLength(60, MinimumLength = 7)]
     [Required]
-    [StringLength(100, MinimumLength = 5, ErrorMessage = "O email deve conter entre 5 e 100 caracteres.")]
-    public string email { get; set; }
+    public string? email { get; set; }
 
+    [RegularExpression(@"^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$")]
     [Required]
-    [StringLength(20, MinimumLength = 10, ErrorMessage = "O telefone deve conter entre 5 e 20 caracteres.")]
-    public string telefone { get; set; }
+    [StringLength(20)]
+    public string? telefone { get; set; }
 
     [Required]
     [Display(Name = "endereço")]
