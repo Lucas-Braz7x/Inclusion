@@ -6,6 +6,9 @@ import javax.persistence.MappedSuperclass;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import lombok.Data;
+
+@Data
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class DadosCadastro {
@@ -27,4 +30,7 @@ public abstract class DadosCadastro {
 	
 	@Column(nullable = false)
 	private String senha;
+	
+	@Column(nullable = false)
+	private String role;
 }
