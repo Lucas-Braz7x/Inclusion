@@ -1,4 +1,0 @@
-{
-  "appService.defaultWebAppToDeploy": "/subscriptions/01e9ec8b-e997-4fb5-af5f-a6ca80d627c7/resourceGroups/inclusion_recursos/providers/Microsoft.Web/sites/inclusion",
-  "appService.deploySubpath": "publish"
-}
