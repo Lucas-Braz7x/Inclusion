@@ -16,16 +16,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Doadores extends DadosCadastro {
-	
+public class Ongs extends DadosCadastro{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false, length = 50)
-	private String nomeDoador;
+	private String nomeOng;
 	
 	@Column(nullable = false)
-	private int idade;
+	private int cnpj;
 	
+
 }
