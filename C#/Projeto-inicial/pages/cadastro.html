@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Descrição da empresa">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700," rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../css/formulario.css">
+
+  <title>Cadastro doador</title>
+</head>
+
+<body>
+  <main>
+    <div class="container">
+
+      <div class="headerFormulario">
+        <p>INCLUSION - LOGO</p>
+        <h1> Bem-vindo ao Inclusion!</h1>
+        <h2> Preencha o formulário abaixo para ajudar quem realmente precisa!</h2>
+      </div>
+
+      <form class="formulario container-fluid">
+        <div class="formularioConteudo">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome: </label>
+              <input id="nome" type="name" class="form-control" aria-describedby="nome do usuário"
+                placeholder="Digite o seu nome..." required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email: </label>
+              <input id="email" type="email" class="form-control" aria-describedby="Email do usuário"
+                placeholder="Digite o seu email..." required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefone">Telefone: </label>
+              <input type="tel" class="form-control" id="telefone" name="tel" maxlength="15"
+                placeholder="Digite o seu número de telefone" pattern="\(\d{2}\)\s*\d{5}-\d{4}" required>
+            </div>
+          </div>
+
+          <!-- Dados:  Data de nascimento -->
+          <div class="form-row dataNascimento">
+            <div class="form-group">
+              <label for="dataNascimentoDia">Dia: </label>
+              <input id="dataNascimentoDia" name="dataNascimentoDia" type="number" min="1" maxlength="2" max="31"
+                class="form-control" placeholder="DD" aria-describedby="Dia do nascimento do usuário">
+            </div>
+
+            <div class="form-group">
+              <label for="dataNascimentoMes">Mes: </label>
+              <select id="dataNascimentoMes" name="dataNascimentoMes" class="form-control"
+                aria-describedby="Mês do nascimento do usuário">
+                <option default value=""></option>
+                <option value="janeiro">Janeiro</option>
+                <option value="fevereiro">Fevereiro</option>
+                <option value="marco">Março</option>
+                <option value="abril">Abril</option>
+                <option value="maio">Maio</option>
+                <option value="junho">Junho</option>
+                <option value="julho">Julho</option>
+                <option value="agosto">Agosto</option>
+                <option value="setembro">Setembro</option>
+                <option value="outubro">Outubro</option>
+                <option value="novembro">Novembro</option>
+                <option value="dezembro">Dezembro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="dataNascimentoAno">Ano: </label>
+              <input id="dataNascimentoAno" name="dataNascimentoAno" type="number" min="1900" minlength="4"
+                maxlength="4" class="form-control" placeholder="AAAA" aria-describedby="Ano do nascimento do usuário">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rua">Rua: </label>
+              <input id="rua" name="rua" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="numero">Número: </label>
+              <input id="numero" name="numero" type="number" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bairro">Bairro: </label>
+              <input id="bairro" name="bairro" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="cep">CEP: </label>
+              <input id="cep" name="cep" maxlength="8" minlength="8" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="cidade">Cidade: </label>
+              <input id="cidade" name="cidade" type="text" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="uf">UF: </label>
+              <select name="uf" id="uf" class="form-control">
+                <option value="ac">Acre</option>
+                <option value="al">Alagoas</option>
+                <option value="am">Amazonas</option>
+                <option value="ap">Amapá</option>
+                <option value="ba">Bahia</option>
+                <option value="ce">Ceará</option>
+                <option value="df">Distrito Federal</option>
+                <option value="es">Espírito Santo</option>
+                <option value="go">Goiás</option>
+                <option value="ma">Maranhão</option>
+                <option value="mt">Mato Grosso</option>
+                <option value="ms">Mato Grosso do Sul</option>
+                <option value="mg">Minas Gerais</option>
+                <option value="pa">Pará</option>
+                <option value="pb">Paraíba</option>
+                <option value="pr">Paraná</option>
+                <option value="pe">Pernambuco</option>
+                <option value="pi">Piauí</option>
+                <option value="rj">Rio de Janeiro</option>
+                <option value="rn">Rio Grande do Norte</option>
+                <option value="ro">Rondônia</option>
+                <option value="rs">Rio Grande do Sul</option>
+                <option value="rr">Roraima</option>
+                <option value="sc">Santa Catarina</option>
+                <option value="se">Sergipe</option>
+                <option value="sp">São Paulo</option>
+                <option value="to">Tocantins</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="senha">Crie uma senha: </label>
+              <input id="senha" name="senha" type="password" class="form-control" placeholder="Crie uma senha..."
+                minlength="8" maxlength="20" required>
+            </div>
+            <div class="form-group">
+              <label for="confirmacaoSenha">Confirme a sua senha: </label>
+              <input id="confirmacaoSenha" name="confirmacaoSenha" class="form-control" type="password"
+                class="form-control" minlength="8" maxlength="20" placeholder="Crie uma senha..." required>
+            </div>
+          </div>
+
+          <div class="botoes">
+            <input type="submit" class="btn btn-primary" aria-label="Enviar"
+              aria-describedby="Envia os dados informados pelo usuário">
+            <input type="reset" class="btn btn-outline-primary" value="Limpar" aria-label="Limpar formulário"
+              aria-describedby="Limpa as informações presentes no formulário">
+          </div>
+          <div class="login">
+            <a href="login.html">Já tem uma conta?</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Bonecão da acessibilidade -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script src="../js/script.js"></script>
+</body>
+
+</html>
