@@ -46,6 +46,7 @@ public class JwtSecurity implements JwtService {
 				.setSubject(doador.getEmail())
 				.claim("id", doador.getId())
 				.claim("nome", doador.getNomeDoador())
+				.claim("email", doador.getEmail())
 				.claim("idade", doador.getIdade())
 				.claim("telefone", doador.getTelefone())
 				.claim("cep", doador.getCep())

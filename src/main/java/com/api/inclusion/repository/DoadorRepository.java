@@ -13,5 +13,7 @@ public interface DoadorRepository extends JpaRepository<Doadores, Long>{
 	
 	boolean existsByEmail(String email);
 	
+	boolean existsById(Long id);
+	
 	Optional<Doadores> findByEmail(String email);
 }

@@ -19,23 +19,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.api.inclusion.error.ErrorAuth;
 import com.api.inclusion.model.Doadores;
+import com.api.inclusion.model.Ongs;
 import com.api.inclusion.repository.DoadorRepository;
+import com.api.inclusion.repository.OngsRepository;
+import com.api.inclusion.security.JwtSecurity;
 import com.api.inclusion.security.Token;
 import com.api.inclusion.service.JwtService;
 
 import io.jsonwebtoken.Claims;
 
 @RestController
-@RequestMapping(value="/doador")
-public class DoadorController {
-
-	/* ALTERNATIVA PRO @AUTOWIRED
-	 * public DoadorController(DoadorRepository DoadorRepository) {
-		this.DoadorRepository = DoadorRepository;
-	}
-	*/
+@RequestMapping(value="/ong")
+public class OngController {
+	
 	@Autowired
-	private DoadorRepository doadorRepository;
+	private OngsRepository ongsRepository;
 	
 	@Autowired
 	private JwtService jwtService;
@@ -44,31 +42,32 @@ public class DoadorController {
 	private PasswordEncoder encoder;
 	
 	@GetMapping
-	public List<Doadores> doador() {
-		List<Doadores> doadores = doadorRepository.findAll();
-		if(doadores.isEmpty()) {
-			throw new Error("Não há doadores cadastrados");
+	public List<Ongs> doador() {
+		List<Ongs> ongs = ongsRepository.findAll();
+		if(ongs.isEmpty()) {
+			throw new Error("Não há ONGs cadastrados");
 		}
-		return doadorRepository.findAll();
+		return ongsRepository.findAll();
 	}
 	
 	//Cadastro
 	@PostMapping("/cadastro")
-	public Doadores salvarDoador(@RequestBody Doadores doador) {
+	public Ongs salvarOng(@RequestBody Ongs ong) {
 		
-		boolean exist = doadorRepository.existsByEmail(doador.getEmail());
-		System.out.println(doador.getEmail() + " -  " + exist);
+		boolean exist = ongsRepository.existsByEmail(ong.getEmail());
+		System.out.println(ong.getEmail() + " -  " + exist);
 		if(exist) {
 			throw new Error("Email já cadastrado");
 		}
-		cripoSenha(doador);
-		return doadorRepository.save(doador);
+		cripoSenha(ong);
+		return ongsRepository.save(ong);
 	}
+	
 	@GetMapping(value="{id}")
-	public ResponseEntity<Doadores> FindByIdUser(@PathVariable Long id){
-		Optional<Doadores> doador = doadorRepository.findById(id);
-		if(doador.isPresent()) {
-			return new ResponseEntity<Doadores>(doador.get(), HttpStatus.OK);
+	public ResponseEntity<Ongs> encontrarPorId(@PathVariable Long id){
+		Optional<Ongs> ong = ongsRepository.findById(id);
+		if(ong.isPresent()) {
+			return new ResponseEntity<Ongs>(ong.get(), HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
@@ -76,14 +75,13 @@ public class DoadorController {
 	
 	//Atualização
 	@PutMapping(value="{id}")
-	public Doadores autualizarDoador(@PathVariable Long id, @RequestBody Doadores doador) {
+	public Ongs autualizarOng(@PathVariable Long id, @RequestBody Ongs ong) {
 		
-		boolean existDoador = doadorRepository.existsById(id);
-		System.out.println(doador.getEmail() + " -  " + existDoador);
+		boolean existOng = ongsRepository.existsById(id);
 		
-		if(existDoador) {
-			cripoSenha(doador);
-			return doadorRepository.saveAndFlush(doador);
+		if(existOng) {
+			cripoSenha(ong);
+			return ongsRepository.saveAndFlush(ong);
 			
 		}else {
 			throw new Error("Id informado não foi encontrado na base de dados");
@@ -92,13 +90,13 @@ public class DoadorController {
 	}	
 	
 	//Login
-	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody Doadores doador) {
+	/*@PostMapping("/login")
+	public ResponseEntity<?> login(@RequestBody Ongs ong) {
 		try {
-			Doadores doadorAutenticado = autenticarDoador(
-					doador.getEmail(),
-					doador.getSenha());
-			String tokenDoador = jwtService.gerarToken(doadorAutenticado);
+			Ongs ongAutenticado = autenticarOng(
+					ong.getEmail(),
+					ong.getSenha());
+			String tokenDoador = jwtService.gerarToken(ongAutenticado);
 			Token tokendoadorAutenticado = new Token(
 					doadorAutenticado.getNomeDoador(),
 					tokenDoador);
@@ -107,17 +105,17 @@ public class DoadorController {
 			System.out.println(e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-	}
+	}*/
 	
 	
 	@DeleteMapping(value ="{id}")
-	public void deletarDoador(@PathVariable Long id, @RequestHeader("Authorization") String authorizationToken) {
-		Optional<Doadores> doador = doadorRepository.findById(id);
+	public void deletarOng(@PathVariable Long id, @RequestHeader("Authorization") String authorizationToken) {
+		Optional<Ongs> ong = ongsRepository.findById(id);
 		
 		String token = authorizationToken.split(" ")[1];
 		
-		if(doador.isPresent() && validarId(token, id)) {
-			doadorRepository.deleteById(id);
+		if(ong.isPresent() && validarId(token, id)) {
+			ongsRepository.deleteById(id);
 		}else {
 			throw new Error("O Id informado não tem acesso para excluir o id desejado");
 		}
@@ -144,27 +142,29 @@ public class DoadorController {
 	}
 	
 	//criptografar senha
-	public void cripoSenha(Doadores doador) {
-		String senha = doador.getSenha();
+	public void cripoSenha(Ongs ong) {
+		String senha = ong.getSenha();
 		String senhaCodificada = encoder.encode(senha);
-		doador.setSenha(senhaCodificada);
+		ong.setSenha(senhaCodificada);
 	}
 	
 	//Verificar existência do usuário no banco de dados
-	public Doadores autenticarDoador(String email, String senha) {
-		Optional<Doadores> doador = doadorRepository.findByEmail(email);
-		if(!doador.isPresent()) {
+	public Ongs autenticarOng(String email, String senha) {
+		Optional<Ongs> ong = ongsRepository.findByEmail(email);
+		if(!ong.isPresent()) {
 			throw new ErrorAuth("Usuário não encontrado, informe outro email");
 		}
 		
 		//Compara as senhas
 		//Primeira entrada a senha recebida, segunda a senha no banco de dados
-		boolean senhaIsEquals = encoder.matches(senha, doador.get().getSenha());
+		boolean senhaIsEquals = encoder.matches(senha, ong.get().getSenha());
 		
 		if(!senhaIsEquals) {
 			throw new ErrorAuth("Senha inválida");
 		}
-		return doador.get();
+		return ong.get();
 	}
+	
+	
 	
 }
