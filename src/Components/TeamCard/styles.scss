@@ -69,9 +69,11 @@
         width: 32px;
         height: 32px;
         background: #eff2f8;
+        color: $primary-color;
 
         &:hover {
           background: #47b2e4;
+          cursor: pointer;
         }
          &:hover i {
           color: #fff;
