@@ -3,7 +3,7 @@ import * as P from 'prop-types';
 import './styles.css';
 
 export const Container = (props) => {
-  return <div className='container'>{props.children}</div>
+  return <div className='container-wrapper'>{props.children}</div>
 }
 
 /*
