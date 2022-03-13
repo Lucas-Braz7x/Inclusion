@@ -23,10 +23,19 @@
   font-size: 18px;
 }
 
+
+
 #myFooter li{
   display: inline-block;
   margin: 0px 15px;
   line-height: 2;
+}
+
+.social-icons{
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 50px;
+  width: 50px;
 }
 
 #myFooter .footer-social{
@@ -43,13 +52,12 @@
   color: #d0d0d0;
   border-radius: 51%;
   padding: 10px;
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   text-align: center;
   line-height: 43px;
   text-decoration: none;
   transition:color 0.2s;
-  /*background: url("~/assets/facebook.svg");*/
 }
 
 #myFooter .fa-facebook:hover{
