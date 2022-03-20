@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { api, registrarToken } from '../../Service/index';
 import { useNavigate } from 'react-router-dom';
-import { mostrarMensagem } from '../../Components';
+import { mostrarMensagem } from '..';
 
 import './styles.scss';
 
 import 'toastr/build/toastr.min.js';
 import 'toastr/build/toastr.css';
+import { Button } from '../UI/Button';
 
 export const Login = () => {
   const history = useNavigate();
@@ -14,12 +15,12 @@ export const Login = () => {
   const [usuarioSenha, setUsuarioSenha] = useState('');
 
 
-  useEffect(() => {
+  /* useEffect(() => {
     const token = localStorage.getItem("USUARIO_LOGADO");
     if (token) {
       history('/');
     }
-  }, [])
+  }, []) */
 
 
   const handleSubmit = (e) => {
@@ -29,7 +30,7 @@ export const Login = () => {
 
     if (msgs && msgs.length > 0) {
       msgs.forEach((mensagem) => {
-        mostrarMensagem("warning", mensagem, "Atenção");
+        mostrarMensagem("success", mensagem, "Atenção");
       });
 
       return false;
@@ -76,31 +77,36 @@ export const Login = () => {
 
   return (
 
-    <div className="form-container">
-      <form onSubmit={(evento) => handleSubmit(evento)}>
+    <main>
 
-        <div className="form-group dados">
-          <label htmlFor='email' className="control-label ">Email: </label>
-          <input
-            type='email'
-            name='email' id='email'
-            onChange={evento => setUsuarioEmail(evento.target.value)}
-            className="form-control"
-          />
-        </div>
 
-        <div className="form-group dados">
-          <label htmlFor='senha' className="control-label ">Senha: </label>
-          <input
-            type='password'
-            name='senha' id='senha'
-            onChange={evento => setUsuarioSenha(evento.target.value)}
-            className="form-control"
-          />
 
-        </div>
-        <button type='submit'>Login</button>
-      </form>
-    </div>
+      <div className="form-container">
+        <form onSubmit={(evento) => handleSubmit(evento)}>
+
+          <div className=" dados">
+            <label htmlFor='email' className="control-label ">Email: </label>
+            <input
+              type='email'
+              name='email' id='email'
+              onChange={evento => setUsuarioEmail(evento.target.value)}
+              className="form-control"
+            />
+          </div>
+
+          <div className=" dados">
+            <label htmlFor='senha' className="control-label ">Senha: </label>
+            <input
+              type='password'
+              name='senha' id='senha'
+              onChange={evento => setUsuarioSenha(evento.target.value)}
+              className="form-control"
+            />
+
+          </div>
+          <Button type='submit'>Login</Button>
+        </form>
+      </div>
+    </main>
   )
 }

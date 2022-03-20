@@ -1,0 +1,18 @@
+@import '../../../Styles/variables.scss';
+
+.button{
+  background: $primary-color;
+  color: $white;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 10px;
+
+  width: auto;
+  padding: 5px 15px;
+
+  &:hover{
+    filter: brightness(1.1);
+  }
+
+}

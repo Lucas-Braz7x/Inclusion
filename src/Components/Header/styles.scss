@@ -1,7 +1,4 @@
-body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
-}
+
 a {
   color: #47b2e4;
   text-decoration: none;
@@ -115,8 +112,11 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
+  position: absolute;
+  top: 0;
+  left: 0;
   transition: all 0.5s;
-  z-index: 997;
+  z-index: 15000;
   padding: 10px 0;
   background: rgba(55, 81, 126, 1);
   height: 70px;
@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
 .navbar {
   padding: 0;
@@ -256,7 +256,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
   color: #fff;
@@ -467,12 +467,3 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-10px);
   }
 }
-
-
-.fixed-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-}
-

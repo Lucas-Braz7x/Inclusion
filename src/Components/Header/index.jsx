@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.scss';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../assets/INCLUSION_logo.png';
 
 export const Header = () => {
@@ -41,7 +41,7 @@ export const Header = () => {
             </li>
 
             <li className="nav-item">
-              <a className="getstarted scrollto">Fazer Doação</a>
+              <a className="getstarted scrollto" href='/cadastro'>Fazer Doação</a>
             </li>
 
             <li className="nav-item">
