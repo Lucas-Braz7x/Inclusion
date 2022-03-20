@@ -1,9 +1,5 @@
 #myFooter{
   padding-top:48px;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
 }
 
 #myFooter .container{
@@ -69,7 +65,7 @@
 }
 
 #myFooter .fa-facebook:focus{
-  color: #2b55ff;
+  color: #2b55ff; 
 }
 
 #myFooter .fa-instagram:hover{
@@ -87,6 +83,8 @@
 #myFooter .fa-twitter:focus{
   color:#00aced;
 }
+
+
 
 /* CSS utilizado para posicionar o rodapé no final da página. */
 
@@ -113,4 +111,3 @@ body{
  flex: 0 0 auto;
  -webkit-flex: 0 0 auto;
 }
-
