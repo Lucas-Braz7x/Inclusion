@@ -8,20 +8,24 @@ import { Equipamentos } from './Pages/Equipamentos';
 import { Contatos } from './Pages/Contatos';
 import { Time } from './Pages/Time';
 import { Login } from './Pages/Login';
+import { Provider } from 'react-redux';
+import { Store } from './Store/store';
 
 function App() {
   return (
     <Container>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route element={<Home />} path="/" />
-          <Route element={<Contatos />} path="/contatos" />
-          <Route element={<Equipamentos />} path="/equipamentos" />
-          <Route element={<Login />} path="/login" />
-          <Route element={<Time />} path="/time" />
-        </Routes>
-        <Footer />
+        <Provider store={Store}>
+          <Header />
+          <Routes>
+            <Route element={<Home />} path="/" />
+            <Route element={<Contatos />} path="/contatos" />
+            <Route element={<Equipamentos />} path="/equipamentos" />
+            <Route element={<Login />} path="/login" />
+            <Route element={<Time />} path="/time" />
+          </Routes>
+          <Footer />
+        </Provider>
       </BrowserRouter>
     </Container>
   );

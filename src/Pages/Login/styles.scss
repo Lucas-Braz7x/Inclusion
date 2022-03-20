@@ -3,38 +3,39 @@
 .form-container{
   display: flex;
   justify-content: center;
-}
 
-form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 400px;
-  padding: 10px;
-  border-radius: 10px;
-
-  box-shadow: 0 0 20px rgba(0,0,0, .5);
-
-  div{
-    width: 100%;
-  }
-
-  button{
-    background: $primary-color;
-    color: #ffffff;
-    font-weight: bold;
-
-    border: none;
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 400px;
+    padding: 10px;
     border-radius: 10px;
 
-    width: auto;
-    padding: 5px 15px;
+    box-shadow: 0 0 20px rgba(0,0,0, .5);
 
-    &:hover{
-      filter: brightness(1.1);
+    div{
+      width: 100%;
     }
 
+    button{
+      background: $primary-color;
+      color: #ffffff;
+      font-weight: bold;
+
+      border: none;
+      border-radius: 10px;
+
+      width: auto;
+      padding: 5px 15px;
+
+      &:hover{
+        filter: brightness(1.1);
+      }
+
+    }
   }
 }
+

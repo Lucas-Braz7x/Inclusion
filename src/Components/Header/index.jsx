@@ -11,7 +11,7 @@ export const Header = () => {
 
         <h1 className="logo me-auto">
           <a href="/">
-            <img src={logo} alt="Imagem da logo inclusion"/>
+            <img src={logo} alt="Imagem da logo inclusion" />
           </a>
         </h1>
 
@@ -29,7 +29,7 @@ export const Header = () => {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link scrollto"  href="/Equipamentos">Equipamentos</a>
+              <a className="nav-link scrollto" href="/Equipamentos">Equipamentos</a>
             </li>
 
             <li className="nav-item">
