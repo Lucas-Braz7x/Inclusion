@@ -1,6 +1,9 @@
 import React from 'react';
 import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaMapMarker } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+import { AiFillPhone } from 'react-icons/ai';
 
 export const Contatos = () => {
   return (
@@ -9,7 +12,7 @@ export const Contatos = () => {
         <div className="container">
 
           <div className="section-title">
-            <h2 id='h2'>Quer falar com a gente?</h2>
+            <h2>Quer falar com a gente?</h2>
             <p>Nós gostaríamos de receber uma mensagem sua. Deixe o seu feedback!</p>
           </div>
 
@@ -18,19 +21,19 @@ export const Contatos = () => {
             <div className="col-lg-5 d-flex align-items-stretch">
               <div className="info">
                 <div className="address">
-                  <i className="bi bi-geo-alt"></i>
+                  <i className="bi bi-geo-alt"><FaMapMarker /></i>
                   <h4>Localização:</h4>
                   <p>A108 Adam Street, São Paulo, SP 535022</p>
                 </div>
 
                 <div className="email">
-                  <i className="bi bi-envelope"></i>
+                  <i className="bi bi-envelope"><MdEmail /></i>
                   <h4>E-mail:</h4>
                   <p>inclusion@atendimento.com</p>
                 </div>
 
                 <div className="phone">
-                  <i className="bi bi-phone"></i>
+                  <i className="bi bi-phone"><AiFillPhone /></i>
                   <h4>Telefone:</h4>
                   <p>+55 11 34567890</p>
                 </div>
