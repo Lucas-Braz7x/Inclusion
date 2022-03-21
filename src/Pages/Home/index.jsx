@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 
+
+
 export const Home = () => {
   const [handleUpdate, setHandleUpdate] = useState(false);
   const dispatch = useDispatch();
@@ -18,5 +20,6 @@ export const Home = () => {
 
   return (
     <button onClick={update}>Atualizar valores</button>
+
   )
 }

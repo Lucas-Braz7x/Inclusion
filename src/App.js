@@ -10,6 +10,8 @@ import { Time } from './Pages/Time';
 import { Provider } from 'react-redux';
 import { Store } from './Store/store';
 import { Cadastro } from './Pages/Cadastro';
+import VLibras from "@djpfs/react-vlibras";
+
 
 function App() {
   return (
@@ -25,8 +27,10 @@ function App() {
             <Route element={<Time />} path="/time" />
           </Routes>
           <Footer />
+          <VLibras />
         </Provider>
       </BrowserRouter>
+
     </Container>
   );
 }

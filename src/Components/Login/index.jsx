@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { api, registrarToken } from '../../Service/index';
 import { useNavigate } from 'react-router-dom';
 import { mostrarMensagem } from '..';
+import { Link } from 'react-router-dom';
+
 
 import './styles.scss';
 
 import 'toastr/build/toastr.min.js';
 import 'toastr/build/toastr.css';
-import { Button } from '../UI/Button';
+//import { Button } from '../UI/Button';
+
+import  Logo from "./assets/inclusion-logo.png";
 
 export const Login = () => {
   const history = useNavigate();
@@ -80,33 +84,59 @@ export const Login = () => {
     <main>
 
 
+<div className="container">
+  <div className="container-login">
+    <div className="wrap-login">
+    <form className="login-form"  onSubmit={(evento) => handleSubmit(evento)}>
+    <span className="login-form-title"> Bem vindo! </span>
 
-      <div className="form-container">
-        <form onSubmit={(evento) => handleSubmit(evento)}>
+    <span className="login-form-title">
+              <img src={Logo} alt="inclusion" />
+            </span>
 
-          <div className=" dados">
-            <label htmlFor='email' className="control-label ">Email: </label>
-            <input
-              type='email'
-              name='email' id='email'
-              onChange={evento => setUsuarioEmail(evento.target.value)}
-              className="form-control"
-            />
+            <div className="wrap-input">
+              <input
+                className= "has-val input"
+                type="email"
+
+                onChange={(e) => setUsuarioEmail(e.target.value)}
+              />
+              <span className="focus-input" data-placeholder="Email"></span>
+            </div>
+
+            <div className="wrap-input">
+              <input
+                className="has-val input"
+                type="password"
+
+                onChange={(e) => setUsuarioSenha(e.target.value)}
+              />
+              <span className="focus-input" data-placeholder="Password"></span>
+            </div>
+            <div className="container-login-form-btn">
+              <button onClick={handleSubmit} type= "submit" className="login-form-btn" >Login</button>
+            </div>
+            <div className="text-center">
+            <span className="txt1">Não possui conta? </span>
+          <Link className="txt2" to="/cadastro">
+            Criar conta.
+          </Link>
+            </div>
+
+            <div className="text-center">
+            <span className="txt1">Esqueceu a Senha? </span>
+          <Link className="txt2" to="#">
+            Esqueci minha senha.
+          </Link>
           </div>
 
-          <div className=" dados">
-            <label htmlFor='senha' className="control-label ">Senha: </label>
-            <input
-              type='password'
-              name='senha' id='senha'
-              onChange={evento => setUsuarioSenha(evento.target.value)}
-              className="form-control"
-            />
-
-          </div>
-          <Button type='submit'>Login</Button>
         </form>
+      </div>
+      </div>
       </div>
     </main>
   )
 }
+
+
+
