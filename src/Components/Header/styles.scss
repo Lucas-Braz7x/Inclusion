@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   z-index: 9999;
   overflow: hidden;
-  background: #37517e;
+  background: white;
 }
 
 #preloader:before {
@@ -139,12 +139,12 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  position: absolute;
+  position: flex;
   top: 0;
   left: 0;
   transition: all 0.5s;
   z-index: 15000;
-  padding: 10px 0;
+  padding: 30px 0;
   background: rgba(55, 81, 126, 1);
   height: 70px;
 
@@ -161,19 +161,26 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-#header .logo a {
+/*#header .logo a {
   color: #fff;
-}
-#header .logo img {
-  max-height: 40px;
+} */
+/* #header .logo img {
+  max-height: 80px;
 }
 
-.logo img{
+ .logo img{
   position: absolute;
   top: 22px;
-  height: 25px;
+  height: auto;
   width: 100px;
+} */
+
+.login-form-title img{
+
+  width: 126px;
 }
+
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -186,9 +193,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar ul {
   margin: 0;
-  padding: 0;
+  padding: 50px;
   display: flex;
-  list-style: none;
+
   align-items: center;
 }
 .navbar li {
@@ -245,14 +252,14 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 200px;
 }
 .navbar .dropdown ul a {
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-size: 14px;
   text-transform: none;
   font-weight: 500;
   color: #0c3c53;
 }
 .navbar .dropdown ul a i {
-  font-size: 12px;
+  font-size: 22px;
 }
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
   color: #47b2e4;
@@ -265,7 +272,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar .dropdown .dropdown ul {
   top: 0;
   left: calc(100% - 30px);
-  visibility: hidden;
+  visibility: visible;
 }
 .navbar .dropdown .dropdown:hover > ul {
   opacity: 1;
@@ -309,7 +316,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-mobile {
   position: fixed;
-  overflow: hidden;
+
   top: 0;
   right: 0;
   left: 0;
@@ -321,9 +328,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-mobile .mobile-nav-toggle {
-  position: absolute;
+  position: relative;
   top: 15px;
-  right: 15px;
+  right: 35px;
 }
 
 .navbar-mobile ul {
@@ -376,16 +383,20 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-mobile .dropdown > .dropdown-active {
   display: block;
 }
+
+
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 80vh;
-  background: #37517e;
+  height: 100vh;
+  background: white;
+
 }
 #hero .container {
-  padding-top: 72px;
+  padding-top: 92px;
 }
 #hero h1 {
   margin: 0 0 10px 0;

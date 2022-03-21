@@ -1,23 +1,23 @@
 import React from 'react';
 import './styles.scss';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../../assets/INCLUSION_logo.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from '../Login/assets/inclusion-logo.png';
+//import { MdReorder } from "react-icons/md";
+
 
 export const Header = () => {
   return (
     <header id="header" className="fixed-top">
       <div className="container d-flex align-items-center">
 
-        <h1 className="logo me-auto">
-          <a href="/">
-            <img src={logo} alt="Imagem da logo inclusion" />
-          </a>
-        </h1>
+      <div className="login-form-title">
+              <img src={logo} alt="inclusion" />
+            </div>
 
         <nav id="navbar" className="navbar navbar-expand-lg">
 
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+          <button className="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+            <span className="navbar-toggle-icon"></span>
           </button>
 
           <ul className="navbar-nav item-list">
