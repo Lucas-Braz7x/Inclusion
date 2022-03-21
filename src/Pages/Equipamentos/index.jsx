@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './styles.scss';
-import { EquipamentoCard } from '../../Components';
+import { EquipamentoCard, FormularioEquipamento } from '../../Components';
 import { api } from '../../Service';
 import { Modal } from '../../Components/UI/Modal';
 
@@ -40,6 +40,7 @@ export const Equipamentos = () => {
   return (
     <>
       <main>
+        <FormularioEquipamento />
         <section id="portfolio" className="portfolio">
           <div className="container">
 
@@ -58,24 +59,32 @@ export const Equipamentos = () => {
               </li>
               <li
                 onClick={() => setFilterEquipamento('visual')}
-                data-filter=".filter-visual">
+                data-filter=".filter-visual"
+                className={filterEquipamento === 'visual' ? "filter-active" : ''}>
                 Visual
               </li>
               <li
                 onClick={() => setFilterEquipamento('auditivo')}
-                data-filter=".filter-auditivo">
+                data-filter=".filter-auditivo"
+                className={filterEquipamento === 'auditivo' ? "filter-active" : ''}>
                 Auditivo
               </li>
               <li
                 onClick={() => setFilterEquipamento('motor')}
-                data-filter=".filter-motor">
+                data-filter=".filter-motor"
+                className={filterEquipamento === 'motor' ? "filter-active" : ''}>
                 Motor
               </li>
               <li onClick={() => setFilterEquipamento('cognitivo')}
-                data-filter=".filter-cognitivo">Cognitivo</li>
+                data-filter=".filter-cognitivo"
+                className={filterEquipamento === 'cognitivo' ? "filter-active" : ''}>
+                Cognitivo
+              </li>
 
               <li onClick={() => setFilterEquipamento('neurologico')}
-                data-filter=".filter-neurologico">Neurológico</li>
+                data-filter=".filter-neurologico"
+                className={filterEquipamento === 'neurologico' ? "filter-active" : ''}>
+                Neurológico</li>
             </ul>
 
             <div className="row portfolio-container">

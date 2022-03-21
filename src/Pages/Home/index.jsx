@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 
-
+import {Libras} from '../../Components/Login/libras'
 
 export const Home = () => {
   const [handleUpdate, setHandleUpdate] = useState(false);
@@ -19,7 +19,9 @@ export const Home = () => {
   }, [handleUpdate])
 
   return (
+    <>
     <button onClick={update}>Atualizar valores</button>
-
+    <Libras />
+    </>
   )
 }

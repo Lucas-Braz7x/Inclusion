@@ -1,0 +1,39 @@
+.cadastro-doador-infos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  .cadastro-ong img,
+  .cadastro-doador-infos img{
+    padding: 20px 0 5px 0;
+    width: 300px;
+  }
+
+  .dados-pessoais{
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0, .5);
+  }
+
+  .dados{
+    width:100%;
+  }
+
+  /* Formulário ong */
+
+  @media (max-width: 315px) {
+    .cadastro-ong img,
+    .cadastro-doador-infos img{
+      width: 150px;
+    }
+    .cadastro-doador-infos h1{
+      font-size: 2rem;
+    }
+    .cadastro-doador-infos h2{
+      font-size: 1rem;
+    }
+  }

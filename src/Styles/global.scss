@@ -7,6 +7,31 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #444444;
+}
+a {
+  color: #47b2e4;
+  text-decoration: none;
+}
+
+li a{
+  text-decoration: none;
+}
+
+img:hover{
+  cursor: pointer;
+}
+a:hover {
+  color: #73c5eb;
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Jost", sans-serif;
+}
+
 main{
   width: 100vw;
   padding-bottom: 256px;
