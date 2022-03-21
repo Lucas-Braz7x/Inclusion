@@ -6,6 +6,7 @@ import { mostrarMensagem } from '..';
 import { api, registrarToken } from '../../Service';
 import { useJwt } from "react-jwt";
 import { useNavigate } from 'react-router-dom';
+import './style.scss';
 
 //import { api } from '../../Service/index';
 
@@ -103,21 +104,21 @@ export const FormularioEquipamento = () => {
       <form
         onSubmit={event => handleSubmitForm(event)}
         encType='multipart/form-data'>
-        <div className='formDiv'>
-          <label htmlFor="equipamento"> Equipamento</label>
-          <input id='equipamento' name='equipamento' type="text" placeholder='Equipamento' />
+        <div className=" dados">
+          <label htmlFor="equipamento" className="control-label "> Equipamento</label>
+          <input id='equipamento' className="form-control" name='equipamento' type="text" placeholder='Equipamento' />
         </div>
-        <div className='formDiv'>
-          <label htmlFor="descricao"> Descricao</label>
-          <input id="descricao" name='descricao' type="text" placeholder='Descrição' />
+        <div className=" dados">
+          <label htmlFor="descricao" className="control-label "> Descricao</label>
+          <input id="descricao" className="form-control" name='descricao' type="text" placeholder='Descrição' />
         </div>
-        <div className='formDiv'>
-          <label htmlFor="imageUrl"> Imagem</label>
-          <input id='imageUrl' name='imageUrl' accept='image/*' type="file" placeholder='Imagem' />
+        <div className=" dados">
+          <label htmlFor="imageUrl" className="control-label "> Imagem</label>
+          <input id='imageUrl' className="form-control" name='imageUrl' accept='image/*' type="file" placeholder='Imagem' />
         </div>
-        <div className='formDiv'>
-          <label htmlFor="tipoDeficiencia">Tipo de deficiência</label>
-          <select
+        <div className=" dados">
+          <label htmlFor="tipoDeficiencia" className="control-label ">Tipo de deficiência</label>
+          <select className="form-control"
             onChange={() => console.log(document.getElementById('tipoDeficiencia').value)}
             name="tipoDeficiencia" id="tipoDeficiencia">
 
