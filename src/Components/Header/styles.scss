@@ -1,3 +1,30 @@
+.menuActive{
+  display: block;
+}
+
+.disabled{
+  display: none;
+}
+
+header{
+  width: 100%;
+  background: red;
+  display: flex;
+  justify-content: flex-end;
+
+  nav{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    ul{
+      gap: 20px;
+      display: flex;
+      align-items: center;
+
+    }
+  }
+}
+
 
 a {
   color: #47b2e4;

@@ -6,7 +6,6 @@ import logo from '../../assets/INCLUSION_logo.png';
 export const Header = () => {
   return (
     <header id="header" className="fixed-top">
-
       <div className="container d-flex align-items-center">
 
         <h1 className="logo me-auto">

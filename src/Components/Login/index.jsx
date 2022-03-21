@@ -30,7 +30,7 @@ export const Login = () => {
 
     if (msgs && msgs.length > 0) {
       msgs.forEach((mensagem) => {
-        mostrarMensagem("success", mensagem, "Atenção");
+        mostrarMensagem("warning", mensagem, "Atenção");
       });
 
       return false;
