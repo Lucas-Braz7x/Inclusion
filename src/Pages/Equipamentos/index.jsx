@@ -2,11 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './styles.scss';
 import { EquipamentoCard, FormularioEquipamento } from '../../Components';
 import { api } from '../../Service';
-import { Modal } from '../../Components/UI/Modal';
 
 export const Equipamentos = () => {
   const [data, setData] = useState([]);
-  const [modalOpened, setModalOpened] = useState(false);
+
   const [filterData, setFilterData] = useState([]);
   const [filterEquipamento, setFilterEquipamento] = useState('');
 
@@ -26,16 +25,10 @@ export const Equipamentos = () => {
 
   }, [filterEquipamento])
 
-  useEffect(() => {
-    console.log(modalOpened)
-  }, [modalOpened])
-
 
   const getContent = useCallback(async () => {
     await api.get("/equipamento").then(async (response) => { setFilterData(response.data), setData(response.data) })
   });
-
-  const handleOpenModal = () => setModalOpened(true);
 
   return (
     <>
@@ -45,7 +38,6 @@ export const Equipamentos = () => {
           <div className="container">
 
             <div className="section-title">
-              <button onClick={() => setModalOpened(!modalOpened)}>Mudar</button>
               <h2>Equipamentos</h2>
               <p>Aqui estão nossos equipamentos para doações</p>
             </div>
@@ -91,7 +83,6 @@ export const Equipamentos = () => {
               {filterData.map((equipamento, indice) => (
                 <EquipamentoCard
                   key={indice}
-                  handleOpenModal={handleOpenModal}
                   equipamento={equipamento}
                   filtro={`filter-${filterEquipamento}`} />))}
 
@@ -100,12 +91,6 @@ export const Equipamentos = () => {
           </div>
         </section>
       </main>
-      <Modal
-        open={modalOpened}
-        onClose={() => setModalOpened(!modalOpened)}
-      ><>
-          <h1>Lucas</h1><h2>Braz</h2>
-        </></Modal>
     </>
   )
 }

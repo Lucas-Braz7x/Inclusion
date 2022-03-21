@@ -11,6 +11,8 @@ import { Provider } from 'react-redux';
 import { Store } from './Store/store';
 import { Cadastro } from './Pages/Cadastro';
 import VLibras from "@djpfs/react-vlibras";
+import { FormularioONG } from './Pages/FormularioONG';
+import { FormularioDoador } from './Components/FormularioDoador';
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
             <Route element={<Contatos />} path="/contatos" />
             <Route element={<Equipamentos />} path="/equipamentos" />
             <Route element={<Cadastro />} path="/cadastro" />
+            <Route element={<FormularioONG />} path="/cadastro/ong" />
+            <Route element={<FormularioDoador />} path="/cadastro/doador" />
             <Route element={<Time />} path="/time" />
           </Routes>
           <Footer />

@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../Login/assets/inclusion-logo.png';
+import { Link } from 'react-router-dom';
 //import { MdReorder } from "react-icons/md";
 
 
@@ -10,9 +11,9 @@ export const Header = () => {
     <header id="header" className="fixed-top">
       <div className="container d-flex align-items-center">
 
-      <div className="login-form-title">
-              <img src={logo} alt="inclusion" />
-            </div>
+        <div className="login-form-title">
+          <img src={logo} alt="inclusion" />
+        </div>
 
         <nav id="navbar" className="navbar navbar-expand-lg">
 
@@ -44,7 +45,8 @@ export const Header = () => {
             </li>
 
             <li className="nav-item">
-              <a className="getstarted scrollto">Ongs</a>
+              <Link className="getstarted scrollto" to="/cadastro/ong" >Ongs</Link>
+
             </li>
 
           </ul>
