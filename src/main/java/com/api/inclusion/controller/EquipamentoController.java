@@ -6,9 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,13 +17,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import com.api.inclusion.model.Doadores;
 import com.api.inclusion.model.Equipamentos;
 
 import com.api.inclusion.repository.EquipamentosRepository;
-
+import com.api.inclusion.service.ImgurService;
 import com.api.inclusion.service.JwtService;
 
 import io.jsonwebtoken.Claims;
@@ -42,6 +43,9 @@ public class EquipamentoController {
 	
 	@Autowired
 	private JwtService jwtService;
+	
+	@Autowired
+	private ImgurService imgurService;
 
 	
 	//Selecionar/ler
@@ -67,8 +71,9 @@ public class EquipamentoController {
 	
 	//Cadastro
 	@PostMapping("/cadastro")
-	public Equipamentos salvarEquipamento(@RequestBody Equipamentos equipamento, 
-			@RequestHeader("Authorization") String authorizationToken) {
+	public Equipamentos salvarEquipamento(@RequestBody @Validated Equipamentos equipamento, 
+			@RequestHeader("Authorization") String authorizationToken,
+			MultipartFile file) {
 		String token = authorizationToken.split(" ")[1];
 		Claims doadorToken = jwtService.obterClaims(token);
 		
@@ -88,10 +93,10 @@ public class EquipamentoController {
 	
 	
 	//Atualização
-	@PutMapping(value="{id}")
+	@PatchMapping(value="{id}")
 	public Equipamentos autualizarEquipamento(
 			@PathVariable Long id, 
-			@RequestBody Equipamentos equipamento,
+			@RequestBody @Validated Equipamentos equipamento,
 			@RequestHeader("Authorization") String authorizationToken) {
 		
 		String token = authorizationToken.split(" ")[1];
@@ -157,6 +162,7 @@ public class EquipamentoController {
 		doador.setEstado(estado);
 		doador.setTelefone(telefone);
 		doador.setEndereco(endereco);
+		doador.setRole("USER");
 	}
 	
 	

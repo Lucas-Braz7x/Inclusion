@@ -58,7 +58,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			http.csrf().disable().authorizeRequests()
 					.antMatchers(HttpMethod.POST, "/doador/cadastro").permitAll()
 					.antMatchers(HttpMethod.POST, "/doador/login").permitAll()
-					.antMatchers(HttpMethod.GET, "/doador").permitAll()
+					.antMatchers(HttpMethod.POST, "/ong/cadastro").permitAll()
+					.antMatchers(HttpMethod.POST, "/ong/login").permitAll()
+					.antMatchers(HttpMethod.POST, "/image").permitAll()
+					.antMatchers(HttpMethod.GET, "/ong").permitAll()
+					.antMatchers(HttpMethod.GET, "/equipamento").permitAll()
 					.anyRequest().authenticated()
 					.and()
 					.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)//Evita cookie e sempre precisa da autenticação

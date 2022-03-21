@@ -25,7 +25,4 @@ public class Doadores extends DadosCadastro {
 	@Column(nullable = false, length = 50)
 	private String nomeDoador;
 	
-	@Column(nullable = false)
-	private int idade;
-	
 }

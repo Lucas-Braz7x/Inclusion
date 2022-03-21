@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,9 @@ public class OngController {
 	private OngsRepository ongsRepository;
 	
 	@Autowired
+	private DoadorRepository doadorRepository;
+	
+	@Autowired
 	private JwtService jwtService;
 	
 	@Autowired 
@@ -52,14 +56,16 @@ public class OngController {
 	
 	//Cadastro
 	@PostMapping("/cadastro")
-	public Ongs salvarOng(@RequestBody Ongs ong) {
+	public Ongs salvarOng(@RequestBody @Validated Ongs ong) {
 		
 		boolean exist = ongsRepository.existsByEmail(ong.getEmail());
+		boolean existEmailDoador = doadorRepository.existsByEmail(ong.getEmail());
 		System.out.println(ong.getEmail() + " -  " + exist);
-		if(exist) {
+		if(exist && existEmailDoador) {
 			throw new Error("Email já cadastrado");
 		}
 		cripoSenha(ong);
+		ong.setRole("ONG");
 		return ongsRepository.save(ong);
 	}
 	
@@ -90,7 +96,7 @@ public class OngController {
 	}	
 	
 	//Login
-	/*@PostMapping("/login")
+	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody Ongs ong) {
 		try {
 			Ongs ongAutenticado = autenticarOng(
@@ -98,14 +104,14 @@ public class OngController {
 					ong.getSenha());
 			String tokenDoador = jwtService.gerarToken(ongAutenticado);
 			Token tokendoadorAutenticado = new Token(
-					doadorAutenticado.getNomeDoador(),
+					ongAutenticado.getNomeOng(),
 					tokenDoador);
 			return ResponseEntity.ok(tokenDoador);
 		}catch(ErrorAuth e){
 			System.out.println(e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-	}*/
+	}
 	
 	
 	@DeleteMapping(value ="{id}")

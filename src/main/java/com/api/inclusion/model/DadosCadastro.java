@@ -31,6 +31,6 @@ public abstract class DadosCadastro {
 	@Column(nullable = false)
 	private String senha;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String role;
 }

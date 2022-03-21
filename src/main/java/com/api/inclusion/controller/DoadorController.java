@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -54,16 +56,18 @@ public class DoadorController {
 	
 	//Cadastro
 	@PostMapping("/cadastro")
-	public Doadores salvarDoador(@RequestBody Doadores doador) {
+	public Doadores salvarDoador(@RequestBody @Validated Doadores doador) {
 		
 		boolean exist = doadorRepository.existsByEmail(doador.getEmail());
 		System.out.println(doador.getEmail() + " -  " + exist);
 		if(exist) {
 			throw new Error("Email já cadastrado");
 		}
+		doador.setRole("USER");
 		cripoSenha(doador);
 		return doadorRepository.save(doador);
 	}
+	
 	@GetMapping(value="{id}")
 	public ResponseEntity<Doadores> FindByIdUser(@PathVariable Long id){
 		Optional<Doadores> doador = doadorRepository.findById(id);
@@ -75,15 +79,55 @@ public class DoadorController {
 	}
 	
 	//Atualização
-	@PutMapping(value="{id}")
-	public Doadores autualizarDoador(@PathVariable Long id, @RequestBody Doadores doador) {
-		
+	@PatchMapping(value="{id}")
+	public Doadores autualizarDoador(@PathVariable Long id, 
+									@RequestBody Doadores doador,
+									@RequestHeader("Authorization") String authorizationToken) {
 		boolean existDoador = doadorRepository.existsById(id);
-		System.out.println(doador.getEmail() + " -  " + existDoador);
 		
 		if(existDoador) {
-			cripoSenha(doador);
-			return doadorRepository.saveAndFlush(doador);
+			String token = authorizationToken.split(" ")[1];
+			Doadores doadorExistente = doadorRepository.getOne(id);
+			System.out.println(doadorExistente.getEmail());
+			System.out.println(doadorExistente.getNomeDoador());
+			System.out.println(doadorExistente.getEndereco());
+			System.out.println(doadorExistente.getTelefone());
+			if(validarId(token, doadorExistente.getId())) {
+				if(doador.getEmail() != null) {
+					if(!doadorRepository.existsByEmail(doador.getEmail())) {
+						doadorExistente.setEmail(doador.getEmail());
+					}else {
+						throw new Error("Email já cadastrado");	
+					}					
+				}
+				
+				if(doador.getNomeDoador() != null) {
+					doadorExistente.setNomeDoador(doador.getNomeDoador());
+				}
+				if(doador.getSenha() != null && doador.getSenha().length() >= 8) {
+					cripoSenha(doador);
+					doadorExistente.setSenha(doador.getSenha());
+				}
+				if(doador.getCep() != null) {
+					doadorExistente.setCep(doador.getCep());
+				}
+				if(doador.getEndereco() != null) {
+					doadorExistente.setEndereco(doador.getEndereco());
+				}
+				if(doador.getEstado() != null) {
+					doadorExistente.setEstado(doador.getEstado());
+				}
+				if(doador.getTelefone() != null) {
+					doadorExistente.setTelefone(doador.getTelefone());
+				}
+				/*if(doador.() != null) {
+					doadorExistente.setTelefone(doador.getTelefone());
+				}*/
+				
+			}else {
+				throw new Error("Não foi possível atualizar, IDs diferentes");	
+			}
+			return doadorRepository.saveAndFlush(doadorExistente);
 			
 		}else {
 			throw new Error("Id informado não foi encontrado na base de dados");
@@ -93,7 +137,7 @@ public class DoadorController {
 	
 	//Login
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody Doadores doador) {
+	public ResponseEntity<?> login(@RequestBody @Validated Doadores doador) {
 		try {
 			Doadores doadorAutenticado = autenticarDoador(
 					doador.getEmail(),
@@ -109,7 +153,7 @@ public class DoadorController {
 		}
 	}
 	
-	
+	//Excluir
 	@DeleteMapping(value ="{id}")
 	public void deletarDoador(@PathVariable Long id, @RequestHeader("Authorization") String authorizationToken) {
 		Optional<Doadores> doador = doadorRepository.findById(id);
