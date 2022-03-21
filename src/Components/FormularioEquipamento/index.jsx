@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '../UI/Button';
 import 'toastr/build/toastr.min.js';
 import 'toastr/build/toastr.css';
@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 export const FormularioEquipamento = () => {
-  const [imageResponse, setImageResponse] = useState(null);
   const { decodedToken, isExpired } = useJwt(localStorage.getItem("USUARIO_LOGADO"));
   const history = useNavigate();
 
@@ -44,27 +43,29 @@ export const FormularioEquipamento = () => {
     formData.append("file", values.imageUrl)
 
     if (values.imageUrl) {
-      const resposta = fetch("http://localhost:8080/image", {
+      const data = await fetch("http://localhost:8080/image", {
         method: 'POST',
         body: formData
 
-      }).then(response => response.json())
-        .then(data => (data, setImageResponse(data)))
-        .catch(error => console.log(error.error));
-      console.log("Resposta: " + resposta)
+      })
+      const response = await data.json()
+      saveEquipamento(values, response);
+    } else {
+      saveEquipamento(values, "sem imagem");
     }
+  }
 
+  const saveEquipamento = async (values, response) => {
     await api.post("equipamento/cadastro", {
       "nomeEquipamento": values.equipamento,
       "descricao": values.descricao,
-      "imageUrl": values.imageUrl ? imageResponse[0] : "sem imagem",
-      "imageHasDelete": values.imageUrl ? imageResponse[1] : "sem imagem",
+      "imageUrl": values.imageUrl ? response[0] : "sem imagem",
+      "imageHasDelete": values.imageUrl ? response[0] : "sem imagem",
       "tipoDeficiencia": values.tipoDeficiencia,
       "doador": handleGetDoador()
     }).then(response => console.log(response))
       .catch(error => console.log(error));
   }
-
 
   const handleGetDoador = () => {
     const doador = {
