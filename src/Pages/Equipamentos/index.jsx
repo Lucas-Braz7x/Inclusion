@@ -2,8 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './styles.scss';
 import { EquipamentoCard, FormularioEquipamento } from '../../Components';
 import { api } from '../../Service';
-
-import { GrAddCircle } from 'react-icons/gr';
+import { IoIosAddCircle } from 'react-icons/io';
 import { Modal } from '../../Components/UI/Modal';
 
 export const Equipamentos = () => {
@@ -105,8 +104,7 @@ export const Equipamentos = () => {
             </div>
           </div>
           <div className='adicionarEquipamento'>
-            <GrAddCircle onClick={() => setModalOpened(true)} />
-
+            <IoIosAddCircle onClick={() => setModalOpened(true)} />
           </div>
         </section>
       </main>

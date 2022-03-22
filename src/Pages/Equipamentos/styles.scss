@@ -148,3 +148,9 @@
   font-style: italic;
   font-family: cursive, monospace;
 }
+
+.adicionarEquipamento{
+  & > svg{
+    color: #37517e;
+  }
+}
