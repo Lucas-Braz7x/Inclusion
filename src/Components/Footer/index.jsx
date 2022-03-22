@@ -12,8 +12,6 @@ export const Footer = () => {
           <li><Link to="/">Sobre</Link></li>
           <li><Link to="/time">Time</Link></li>
           <li><Link to="/equipamentos">Equipamentos</Link></li>
-          <li><Link to="/Ong">Ong Amigas</Link></li>
-          <li><Link to="/Doador">Doadores</Link></li>
           <li><Link to="/Contatos">Contato</Link></li>
 
         </ul>

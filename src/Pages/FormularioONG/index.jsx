@@ -6,6 +6,7 @@ import { api } from '../../Service';
 import * as P from 'prop-types';
 import 'toastr/build/toastr.min.js';
 import 'toastr/build/toastr.css';
+import logo from '../../assets/INCLUSION_PRETO.png';
 
 
 
@@ -124,13 +125,14 @@ export const FormularioONG = ({ idOng }) => {
   }
   return (
     <main>
-      <div className="cadastro-ong m-4 d-flex justify-content-center align-items-stretch">
-        <div className="row col-md-4 col-lg-4 col-xl-6">
-          <div className="cadastro-doador-infos">
-            {/* <img src={logo} alt="Imagem da logo inclusion" /> */}
+      <div className="cadastro-doador-infos">
+            <img src={logo} alt="Imagem da logo inclusion" /> 
             <h1> Bem-vindo ao Inclusion!</h1>
             <h2> Preencha o formulário abaixo para ajudar quem realmente precisa!</h2>
           </div>
+      <div className="cadastro-ong m-4 d-flex justify-content-center align-items-stretch">
+        <div className="row col-md-3 col-lg-3 col-xl-4">
+          
           <div className="col dados-pessoais">
             <form onSubmit={(evento) => handleSubmitForm(evento)}>
               <label className="control-label">Nome da ONG</label>
@@ -155,15 +157,15 @@ export const FormularioONG = ({ idOng }) => {
               <label className="control-label">CEP</label>
               <input id="cepOng" minLength={2} maxLength={2} placeholder="Digite o CEP da ong" className="form-control" />
 
-              <label className="control-label">Senha</label>
+              <label className="control-label">Senha</label><ShowPassword idInput={"senhaOng"} />
               <input id="senhaOng" minLength={8} type='password' placeholder="Digite a senha" className="form-control" />
-              <ShowPassword idInput={"senhaOng"} />
+              
 
-              <label className="control-label">Senha</label>
+              <label className="control-label">Senha</label><ShowPassword idInput={"senhaOngRepetida"} />
               <input id="senhaOngRepetida" minLength={8} type='password' placeholder="Digite a senha" className="form-control" />
-              <ShowPassword idInput={"senhaOngRepetida"} />
+              
 
-              <button type="submit"> Enviar</button>
+              <button type="button" className="btn btn-primary btn-lg" > Enviar</button>
 
             </form>
           </div>

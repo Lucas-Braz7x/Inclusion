@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-  color: #47b2e4;
+  color: #f0f2f3;
+}
+
+a{
+  color: #fff;
 }
 .navbar .getstarted, .navbar .getstarted:focus {
   padding: 8px 20px;
@@ -14,7 +18,7 @@
 }
 .navbar .getstarted:hover, .navbar .getstarted:focus:hover {
   color: #fff;
-  background: #31a9e1;
+  
 }
 
 header{
@@ -36,6 +40,11 @@ header .container {
 header img {
   margin-right: 0;
   width: 80px;
+  height: 80px;
+  margin-right: 0;
+  padding: 5px 0;
+  position: relative;
+  display: block;
 }
 header nav {
   display: flex;
@@ -51,14 +60,32 @@ header nav ul li {
 
 header nav ul li{
   text-decoration: none;
-  color: rgb(241, 239, 239);
+  
   font-family: 'Roboto', sans-serif ;
   padding: 2.0rem;
   transition: all 250ms linear 0s;
   font-size: 13px;
   line-height: 0;
   margin-left: 5px;
+  justify-content: center;
+  text-align: center;
+  color: white !important;
 }
+
+header nav ul li a:hover {
+  color: #31a9e1;
+
+  text-decoration: none;
+
+  transition: 0.6s;
+  margin-top: 6px;
+  
+  top: 2px;
+  border-radius: 10px;
+
+
+}
+
 
 header nav ul li Link{
   position: relative;
@@ -102,6 +129,7 @@ header nav ul li Link{
     width: 100%;
     margin: 6px auto;
     transition-duration: 0.3s;
+    justify-content: center;
   }
   .menu-toggle{
     width: 40px;
@@ -122,6 +150,7 @@ header nav ul li Link{
     transition: 0.3s;
     z-index: 999;
     height: 460px;
+    justify-content: center;
   }
 
   .menu-section.on nav{

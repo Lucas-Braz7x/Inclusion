@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../Login/assets/inclusion-logo.png';
 import {Link} from 'react-router-dom';
 
+
 export const Header = () => {
 
 const [classOn, setClassOn] = useState(false);
@@ -23,26 +24,25 @@ const [classOn, setClassOn] = useState(false);
               <div className="three"></div>
            </div>
 
-           <nav id="navbar" className="navbar navbar-expand-lg">
-            <ul className="navbar-nav item-list">
+           <nav>
+            <ul>
+
               <li>
-                <Link to="/" style={{"color": "white"}}>Página Inicial</Link>
+                <a className="text-white" href="/">Página Inicial</a>
               </li>
               <li>
-                <Link to="/Equipamentos" style={{"color": "white"}}>Equipamentos</Link>
+                <a className="text-white" href="/equipamentos">Equipamentos</a>
               </li>
               <li>
-                <Link to="/Time" style={{"color": "white"}}>Time</Link>
+                <a className="text-white" href="/time">Time</a>
               </li>
               <li>
-                <Link to="/Contatos" style={{"color": "white"}}>Contatos</Link>
+                <a className="text-white" href="/contatos">Contatos</a>
               </li>
               <li>
-                <Link to='/cadastro' className="getstarted scrollto">Doação</Link>  
+                <a className="text-white" href="/login">Login</a>
               </li>
-              <li>
-                <Link to="/cadastro/ong" className="getstarted scrollto" style={{"color": "white"}}>Ongs</Link>  
-              </li>
+              
             </ul>
           </nav>
 

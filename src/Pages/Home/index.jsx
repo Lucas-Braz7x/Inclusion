@@ -2,15 +2,20 @@ import React from 'react';
 
 import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import h1png from '../../assets/h1.png';
-//import "bootstrap-icons/font/bootstrap-icons.css";
-import ONG from "../../assets/iconetitle.png";
+import h1png from '../../assets/H1_SemBG.png';
+import "bootstrap-icons/font/bootstrap-icons.css";
+import ONG1 from "./clients/client-1.png";
+import ONG2 from "./clients/client-2.png";
+import ONG3 from "./clients/client-3.png";
+import ONG4 from "./clients/client-4.png";
+import ONG5 from "./clients/client-5.png";
+import ONG6 from "./clients/client-6.png";
 
 export const Home = () => {
 
   return (
     <main id="home">
-      <div id='hero' className='d-flex alignt-items-center'>
+      <div id='hero' className='d-flex alignt-items-center align-items-stretch'>
         <div className='container'>
           <div className='row'>
             <div id='texto' className='col-lg-7  d-flex flex-column justify-content-center pt-4'>
@@ -32,27 +37,27 @@ export const Home = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src={ONG} className="img-fluid" alt="" />
+              <img src={ONG1} className="img-fluid" alt="" />
             </div>
 
             <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src={ONG} className="img-fluid" alt="" />
+              <img src={ONG2} className="img-fluid" alt="" />
             </div>
 
             <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src={ONG} className="img-fluid" alt="" />
+              <img src={ONG3} className="img-fluid" alt="" />
             </div>
 
             <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src={ONG} className="img-fluid" alt="" />
+              <img src={ONG4} className="img-fluid" alt="" />
             </div>
 
             <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src={ONG} className="img-fluid" alt="" />
+              <img src={ONG5} className="img-fluid" alt="" />
             </div>
 
             <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-              <img src={ONG} className="img-fluid" alt="" />
+              <img src={ONG6} className="img-fluid" alt="" />
             </div>
 
           </div>
