@@ -17,7 +17,7 @@ export const FormularioEquipamento = ({ onClose, methodForm, id }) => {
 
   useEffect(() => {
     console.log(decodedToken)
-    if (!decodedToken || isExpired) {
+    if (isExpired) {
       mostrarMensagem("error", "Faça login novamente", "Usuário deslogado");
       history('/login');
     }

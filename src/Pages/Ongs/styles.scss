@@ -1,0 +1,22 @@
+.ongContainer{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  max-width: 100%;
+  min-width: 190px;
+  width: auto;
+  margin: 20px 0;
+
+  .ongContent{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 50px;
+    box-shadow: 0 0 3px rgba(0,0,0, .5);
+
+
+  }
+}
