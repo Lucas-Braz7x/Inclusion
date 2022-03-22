@@ -18,15 +18,6 @@ export const Login = () => {
   const [usuarioEmail, setUsuarioEmail] = useState('');
   const [usuarioSenha, setUsuarioSenha] = useState('');
 
-
-  /* useEffect(() => {
-    const token = localStorage.getItem("USUARIO_LOGADO");
-    if (token) {
-      history('/');
-    }
-  }, []) */
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -36,7 +27,6 @@ export const Login = () => {
       msgs.forEach((mensagem) => {
         mostrarMensagem("warning", mensagem, "Atenção");
       });
-
       return false;
     }
 
@@ -45,12 +35,16 @@ export const Login = () => {
       "senha": usuarioSenha
     })
       .then((response) => {
-        salvarLocal(response.data);
-        mostrarMensagem("success", "Usuário autenticado", "Bem-vindo");
-        history('/');
+        if (response.status == 200) {
+          mostrarMensagem("success", "Usuário autenticado", "Bem-vindo");
+          salvarLocal(response.data);
+          history('/');
+        } else {
+          console.log("Error")
+        }
       })
-      .catch(error => {
-        mostrarMensagem("error", error.response.data.message, "Falha ao autenticar usuário")
+      .catch(() => {
+        mostrarMensagem("error", "Usuário ou senha incorreta", "Falha ao autenticar usuário")
       });
 
   }
@@ -68,12 +62,14 @@ export const Login = () => {
     console.log(email)
     if (!email) {
       mensagens.push("O campo email é obrigatório");
-    } else if (!email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]/)) {
+    }
+
+    if (!email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]/)) {
       mensagens.push("Informe um email válido");
     }
 
-    if (senha.length < 3) {
-      mensagens.push("A senha precisa conter 3 caracteres ou mais");
+    if (senha.length < 8) {
+      mensagens.push("A senha precisa conter 8 caracteres ou mais");
     }
 
     return mensagens;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsGithub } from 'react-icons/bs';
 
 export const Footer = () => {
   return (
@@ -20,14 +21,22 @@ export const Footer = () => {
 
       <div className="footer-social">
 
-        <a href="#"><img className='social-icons'
-          src={require('../../assets/facebook.svg').default} alt="Ícone do facebook" />
+        <a href="#" className='social-icons'>
+          <BsFacebook />
         </a>
-        <a href="#"><img className='social-icons'
-          src={require('../../assets/instagram.svg').default} alt="Ícone do instagram" />
+        <a href="#" className='social-icons'>
+
+          <BsInstagram />
         </a>
-        <a href="#"><img className='social-icons'
-          src={require('../../assets/twitter.svg').default} alt="Íconde do twitter" />
+        <a href="#" className='social-icons'>
+
+          <BsTwitter />
+        </a>
+        <a href="#" className='social-icons'>
+          <BsGithub />
+        </a>
+        <a href="#" className='social-icons'>
+          <BsLinkedin />
         </a>
 
       </div>

@@ -2,8 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './styles.scss';
 import { EquipamentoCard, FormularioEquipamento } from '../../Components';
 import { api } from '../../Service';
-
-import { GrAddCircle } from 'react-icons/gr';
+import { IoIosAddCircle } from 'react-icons/io';
 import { Modal } from '../../Components/UI/Modal';
 
 export const Equipamentos = () => {
@@ -92,18 +91,20 @@ export const Equipamentos = () => {
             </ul>
 
             <div className="row portfolio-container">
-              {filterData.map((equipamento, indice) => (
-                <EquipamentoCard
-                  handleUpdateData={handleUpdateData}
-                  key={indice}
-                  equipamento={equipamento}
-                  filtro={`filter-${filterEquipamento}`} />))}
+              {filterData.length > 0 &&
+                filterData.map((equipamento, indice) => (
+                  <EquipamentoCard
+                    handleUpdateData={handleUpdateData}
+                    key={indice}
+                    equipamento={equipamento}
+                    filtro={`filter-${filterEquipamento}`} />))}
+
+              {filterData.length == 0 && <span className='span'>Não há nenhum equipamento nesta categoria...</span>}
 
             </div>
           </div>
           <div className='adicionarEquipamento'>
-            <GrAddCircle onClick={() => setModalOpened(true)} />
-
+            <IoIosAddCircle onClick={() => setModalOpened(true)} />
           </div>
         </section>
       </main>
