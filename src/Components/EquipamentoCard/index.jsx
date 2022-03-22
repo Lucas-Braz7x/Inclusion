@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import * as P from 'prop-types';
 import img from '../../assets/sem-imagem.jpg';
@@ -7,15 +7,59 @@ import { FiTrash2 } from 'react-icons/fi';
 import { BiEditAlt } from 'react-icons/bi';
 import { MdAdd } from 'react-icons/md';
 import { Modal } from '../UI/Modal';
-//import { registrarToken } from '../../Service';
+import { registrarToken } from '../../Service';
+import { api } from '../../Service';
 import { useJwt } from "react-jwt";
-//import { mostrarMensagem } from '..';
+import { mostrarMensagem } from '..';
+import { FormularioEquipamento } from '../FormularioEquipamento';
 //import { useNavigate } from 'react-router-dom';
 
-export const EquipamentoCard = ({ filtro, equipamento }) => {
+export const EquipamentoCard = ({ filtro, equipamento, handleUpdateData }) => {
   const [modal, setModal] = useState(false);
+  const [idEquipamento, setIdEquipamento] = useState(null);
+  const [modalForm, setModalForm] = useState(false);
+  const { decodedToken, isExpired } = useJwt(localStorage.getItem("USUARIO_LOGADO"));
+  const idDoador = equipamento.doador.id;
+  const isLogin = decodedToken ? decodedToken.id == idDoador : false;
 
-  const { decodedToken } = useJwt(localStorage.getItem("USUARIO_LOGADO"));
+  useEffect(() => {
+    if (decodedToken) {
+      registrarToken(localStorage.getItem("USUARIO_LOGADO"));
+    }
+
+    if (isExpired) {
+      mostrarMensagem('error', "Faça login novamente", "Usuário deslogado");
+      localStorage.removeItem("USUARIO_LOGADO");
+    }
+  }, [])
+
+  const deleteEquipamento = async (id, equipamento) => {
+    console.log(equipamento.imageHasDelete);
+    if (confirm("Tem certeza que deseja excluir este equipamento?")) {
+      if (equipamento.imageHasDelete) {
+        await api.delete(`/image/${equipamento.imageHasDelete}`)
+          .then(() => console.log("imagem excluida com sucesso"))
+          .catch(error => console.log(error));
+      }
+      await api.delete(`/equipamento/${id}`)
+        .then(() => mostrarMensagem('success', "", "Equipamento excluído com sucesso"))
+        .catch(error => (console.log(error), mostrarMensagem('error', error, "Falha ao excluir equipamento")));
+
+      await handleUpdateData();
+      setModal(!modal);
+    }
+  }
+
+  const openModalEquipamento = (equipamento) => {
+    setModalForm(true);
+    setIdEquipamento(equipamento.id);
+  }
+
+  const closeModals = async () => {
+    await handleUpdateData();
+    setModal(!modal);
+    setModalForm(!modalForm);
+  }
 
 
   return (
@@ -40,6 +84,7 @@ export const EquipamentoCard = ({ filtro, equipamento }) => {
         </div>
       </div>
       <Modal
+        id={equipamento.doador.id}
         open={modal}
         onClose={() => setModal(!modal)}
       ><>
@@ -65,10 +110,10 @@ export const EquipamentoCard = ({ filtro, equipamento }) => {
                 </div>
 
                 <div className='modalIcons'>
-                  {decodedToken.id == equipamento.doador.id && (
+                  {isLogin && (
                     <>
-                      <FiTrash2 />
-                      <BiEditAlt />
+                      <FiTrash2 onClick={() => deleteEquipamento(equipamento.id, equipamento)} />
+                      <BiEditAlt onClick={() => openModalEquipamento(equipamento)} />
                     </>
                   )}
                 </div>
@@ -76,6 +121,12 @@ export const EquipamentoCard = ({ filtro, equipamento }) => {
             </div>
           </div>
         </></Modal>
+      <Modal
+        open={modalForm}
+        onClose={closeModals}
+      >
+        <FormularioEquipamento id={idEquipamento} methodForm='update' onClose={() => setModalForm(!modalForm)} />
+      </Modal>
     </>
   )
 }
@@ -84,5 +135,5 @@ export const EquipamentoCard = ({ filtro, equipamento }) => {
 EquipamentoCard.propTypes = {
   filtro: P.string,
   equipamento: P.object.isRequired,
-  handleOpenModal: P.func
+  handleUpdateData: P.func
 }

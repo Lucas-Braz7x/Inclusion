@@ -3,16 +3,20 @@ import './styles.scss';
 import { EquipamentoCard, FormularioEquipamento } from '../../Components';
 import { api } from '../../Service';
 
+import { GrAddCircle } from 'react-icons/gr';
+import { Modal } from '../../Components/UI/Modal';
+
 export const Equipamentos = () => {
   const [data, setData] = useState([]);
-
+  const [updateData, setUpdateData] = useState(false);
+  const [modalOpened, setModalOpened] = useState(false);
   const [filterData, setFilterData] = useState([]);
   const [filterEquipamento, setFilterEquipamento] = useState('');
 
   useEffect(() => {
     getContent();
     setFilterData(data);
-  }, [])
+  }, [updateData])
 
   useEffect(() => {
 
@@ -26,6 +30,15 @@ export const Equipamentos = () => {
   }, [filterEquipamento])
 
 
+  const handleUpdateData = () => {
+    setUpdateData(!updateData);
+  }
+
+  const handleModalOpen = () => {
+    setUpdateData(!updateData);
+    setModalOpened(!modalOpened);
+  }
+
   const getContent = useCallback(async () => {
     await api.get("/equipamento").then(async (response) => { setFilterData(response.data), setData(response.data) })
   });
@@ -33,7 +46,6 @@ export const Equipamentos = () => {
   return (
     <>
       <main>
-        <FormularioEquipamento />
         <section id="portfolio" className="portfolio">
           <div className="container">
 
@@ -82,15 +94,25 @@ export const Equipamentos = () => {
             <div className="row portfolio-container">
               {filterData.map((equipamento, indice) => (
                 <EquipamentoCard
+                  handleUpdateData={handleUpdateData}
                   key={indice}
                   equipamento={equipamento}
                   filtro={`filter-${filterEquipamento}`} />))}
 
             </div>
+          </div>
+          <div className='adicionarEquipamento'>
+            <GrAddCircle onClick={() => setModalOpened(true)} />
 
           </div>
         </section>
       </main>
+      <Modal
+        open={modalOpened}
+        onClose={handleModalOpen}>
+        <FormularioEquipamento methodForm='post' onClose={handleModalOpen} />
+
+      </Modal>
     </>
   )
 }

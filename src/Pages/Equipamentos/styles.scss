@@ -121,3 +121,20 @@
   padding: 0;
 }
 
+.adicionarEquipamento{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: red;
+
+  svg{
+    color: #37517e;
+    width: 25px;
+    height: 25px;
+
+    transition: transform .6s;
+    &:hover{
+      transform: scale(1.2);
+    }
+  }
+}

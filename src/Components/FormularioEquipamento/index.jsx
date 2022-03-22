@@ -7,11 +7,11 @@ import { api, registrarToken } from '../../Service';
 import { useJwt } from "react-jwt";
 import { useNavigate } from 'react-router-dom';
 import './style.scss';
-
+import * as P from 'prop-types';
 //import { api } from '../../Service/index';
 
 
-export const FormularioEquipamento = () => {
+export const FormularioEquipamento = ({ onClose, methodForm, id }) => {
   const { decodedToken, isExpired } = useJwt(localStorage.getItem("USUARIO_LOGADO"));
   const history = useNavigate();
 
@@ -33,11 +33,13 @@ export const FormularioEquipamento = () => {
       tipoDeficiencia: document.getElementById('tipoDeficiencia').value
     }
 
-    const msg = validation(values);
+    if (methodForm == 'post') {
+      const msg = validation(values);
 
-    if (msg.length > 0) {
-      msg.map((message) => mostrarMensagem("error", message, "Falha ao cadastrar equipamento"));
-      return;
+      if (msg.length > 0) {
+        msg.map((message) => mostrarMensagem("error", message, "Falha ao cadastrar equipamento"));
+        return;
+      }
     }
 
     const formData = new FormData();
@@ -50,9 +52,9 @@ export const FormularioEquipamento = () => {
 
       })
       const response = await data.json()
-      saveEquipamento(values, response);
+      methodForm === "post" ? saveEquipamento(values, response) : updateEquipamento(values, response, id);
     } else {
-      saveEquipamento(values, "sem imagem");
+      methodForm === "post" ? saveEquipamento(values, "") : updateEquipamento(values, "", id);
     }
   }
 
@@ -61,11 +63,29 @@ export const FormularioEquipamento = () => {
       "nomeEquipamento": values.equipamento,
       "descricao": values.descricao,
       "imageUrl": values.imageUrl ? response[0] : "sem imagem",
-      "imageHasDelete": values.imageUrl ? response[0] : "sem imagem",
+      "imageHasDelete": values.imageUrl ? response[1] : "sem imagem",
       "tipoDeficiencia": values.tipoDeficiencia,
       "doador": handleGetDoador()
-    }).then(response => console.log(response))
-      .catch(error => console.log(error));
+    }).then(() => mostrarMensagem("success", "", "Equipamento cadastrado com sucesso!"))
+      .catch(error => mostrarMensagem("error", error, "Error ao cadastrar equipamento"));
+
+    onClose();
+  }
+
+  const updateEquipamento = async (values, response, id) => {
+    console.log(values == true)
+    if (values) {
+      await api.patch(`/equipamento/${id}`, {
+        "nomeEquipamento": values.equipamento ? values.equipamento : '',
+        "descricao": values.descricao ? values.descricao : '',
+        "imageUrl": values.imageUrl ? response[0] : "sem imagem",
+        "imageHasDelete": values.imageUrl ? response[1] : "sem imagem",
+        "tipoDeficiencia": values.tipoDeficiencia ? values.tipoDeficiencia : '',
+      }).then(() => mostrarMensagem("success", "", "Equipamento cadastrado com sucesso!"))
+        .catch(error => mostrarMensagem("error", error, "Error ao cadastrar equipamento"));
+    }
+
+    onClose();
   }
 
   const handleGetDoador = () => {
@@ -105,6 +125,10 @@ export const FormularioEquipamento = () => {
       <form
         onSubmit={event => handleSubmitForm(event)}
         encType='multipart/form-data'>
+        <div className="cadastroEquipamento">
+          {methodForm === "post" ? "Cadastro " : "Editar "}
+          equipamento
+        </div>
         <div className=" dados">
           <label htmlFor="equipamento" className="control-label "> Equipamento</label>
           <input id='equipamento' className="form-control" name='equipamento' type="text" placeholder='Equipamento' />
@@ -132,9 +156,15 @@ export const FormularioEquipamento = () => {
           </select>
         </div>
         <div className='formDiv'>
-          <Button type='submit'>Cadastrar</Button>
+          <Button type='submit'>{methodForm == 'post' ? "Cadastrar" : "Atualizar"}</Button>
         </div>
       </form>
     </div>
   )
+}
+
+FormularioEquipamento.propTypes = {
+  onClose: P.func,
+  methodForm: P.string,
+  id: P.number
 }
