@@ -109,19 +109,19 @@ public class EquipamentoController {
 			Equipamentos equipamentoExistente = equipamentosRepository.getById(id);
 			System.out.println(equipamentoExistente);
 			
-			if(equipamento.getNomeEquipamento() != null || equipamento.getNomeEquipamento() == "") {
+			if(equipamento.getNomeEquipamento() != null && equipamento.getNomeEquipamento() != "") {
 				equipamentoExistente.setNomeEquipamento(equipamento.getNomeEquipamento());
 			}
-			if(equipamento.getDescricao() != null || equipamento.getDescricao() == "") {
+			if(equipamento.getDescricao() != null && equipamento.getDescricao() != "") {
 				equipamentoExistente.setDescricao(equipamento.getDescricao());
 			}
-			if(equipamento.getTipoDeficiencia() != null || equipamento.getTipoDeficiencia() == "") {
+			if(equipamento.getTipoDeficiencia() != null && equipamento.getTipoDeficiencia() != "") {
 				equipamentoExistente.setTipoDeficiencia(equipamento.getTipoDeficiencia());
 			}
-			if(equipamento.getImageUrl() != null || equipamento.getImageUrl() == "sem imagem") {
+			if(equipamento.getImageUrl() != null && equipamento.getImageUrl() != "sem imagem") {
 				equipamentoExistente.setImageUrl(equipamento.getImageUrl());
 			}
-			if(equipamento.getImageHasDelete() != null || equipamento.getImageHasDelete() == "sem imagem") {
+			if(equipamento.getImageHasDelete() != null && equipamento.getImageHasDelete() != "sem imagem") {
 				equipamentoExistente.setImageHasDelete(equipamento.getImageHasDelete());
 			}
 			

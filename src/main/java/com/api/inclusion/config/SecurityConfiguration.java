@@ -84,7 +84,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		@Bean
 		public FilterRegistrationBean<CorsFilter> corsFilter(){
 			List<String> all = Arrays.asList("*");
-			List<String> allOrigins = Arrays.asList("/**", "http://localhost:3000");
+			List<String> allOrigins = Arrays.asList("/**", "http://localhost:3000", "https://inclusion-recode.netlify.app/","https://inclusion-recode.vercel.app/");
 			CorsConfiguration config = new CorsConfiguration();
 			config.setAllowedMethods(all);//Permite todos os métodos
 			config.setAllowedOrigins(allOrigins);//Permite as origins de acesso
