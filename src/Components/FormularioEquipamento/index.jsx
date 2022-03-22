@@ -46,7 +46,7 @@ export const FormularioEquipamento = ({ onClose, methodForm, id }) => {
     formData.append("file", values.imageUrl)
 
     if (values.imageUrl) {
-      const data = await fetch("http://localhost:8080/image", {
+      const data = await fetch("https://inclusion-recode.herokuapp.com/image", {
         method: 'POST',
         body: formData
 
@@ -74,12 +74,13 @@ export const FormularioEquipamento = ({ onClose, methodForm, id }) => {
 
   const updateEquipamento = async (values, response, id) => {
     console.log(values == true)
+    console.log(id)
     if (values) {
       await api.patch(`/equipamento/${id}`, {
         "nomeEquipamento": values.equipamento ? values.equipamento : '',
         "descricao": values.descricao ? values.descricao : '',
-        "imageUrl": values.imageUrl ? response[0] : "sem imagem",
-        "imageHasDelete": values.imageUrl ? response[1] : "sem imagem",
+        "imageUrl": response[0],
+        "imageHasDelete": response[1],
         "tipoDeficiencia": values.tipoDeficiencia ? values.tipoDeficiencia : '',
       }).then(() => mostrarMensagem("success", "", "Equipamento cadastrado com sucesso!"))
         .catch(error => mostrarMensagem("error", error, "Error ao cadastrar equipamento"));

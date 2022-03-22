@@ -138,3 +138,13 @@
     }
   }
 }
+
+.span{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 20px 0;
+
+  font-style: italic;
+  font-family: cursive, monospace;
+}

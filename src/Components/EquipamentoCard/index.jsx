@@ -12,6 +12,7 @@ import { api } from '../../Service';
 import { useJwt } from "react-jwt";
 import { mostrarMensagem } from '..';
 import { FormularioEquipamento } from '../FormularioEquipamento';
+import { useNavigate } from 'react-router-dom';
 //import { useNavigate } from 'react-router-dom';
 
 export const EquipamentoCard = ({ filtro, equipamento, handleUpdateData }) => {
@@ -21,6 +22,7 @@ export const EquipamentoCard = ({ filtro, equipamento, handleUpdateData }) => {
   const { decodedToken, isExpired } = useJwt(localStorage.getItem("USUARIO_LOGADO"));
   const idDoador = equipamento.doador.id;
   const isLogin = decodedToken ? decodedToken.id == idDoador : false;
+  const history = useNavigate();
 
   useEffect(() => {
     if (decodedToken) {
@@ -57,8 +59,9 @@ export const EquipamentoCard = ({ filtro, equipamento, handleUpdateData }) => {
 
   const closeModals = async () => {
     await handleUpdateData();
-    setModal(!modal);
-    setModalForm(!modalForm);
+    history('/equipamentos')
+    setModal(false);
+    setModalForm(false);
   }
 
 
@@ -67,7 +70,7 @@ export const EquipamentoCard = ({ filtro, equipamento, handleUpdateData }) => {
       <div className={`col-lg-4 col-md-6 portfolio-item ${filtro}`}>
         <div className="portfolio-img">
           <img
-            src={equipamento.imageUrl.length < 20 ?
+            src={equipamento.imageUrl == 'sem imagem' || equipamento.imageUrl == null ?
               img : equipamento.imageUrl}
             className="img-fluid" alt="" />
         </div>
@@ -86,12 +89,12 @@ export const EquipamentoCard = ({ filtro, equipamento, handleUpdateData }) => {
       <Modal
         id={equipamento.doador.id}
         open={modal}
-        onClose={() => setModal(!modal)}
+        onClose={closeModals}
       ><>
           <div className='modalContainer'>
             <div className='modalContent'>
               <div className='modalImage'>
-                <img src={equipamento.imageUrl == "sem imagem" ? img : equipamento.imageUrl}
+                <img src={!equipamento.imageUrl ? img : equipamento.imageUrl}
                   alt={equipamento.imageUrl} />
               </div>
               <div>
