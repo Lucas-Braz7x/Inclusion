@@ -1,59 +1,55 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../Login/assets/inclusion-logo.png';
-import { Link } from 'react-router-dom';
+import logo from '../Login/assets/INCLUSION1.png';
 //import { MdReorder } from "react-icons/md";
+import { FiLogOut } from 'react-icons/fi';
 
 
 export const Header = () => {
+
+  const [botaoOn, setBotaoOn] = useState(false);
   return (
-    <header id="header" className="fixed-top">
-      <div className="container d-flex align-items-center">
+    <header>
+    <div className="container">
+      
+      <div className="navbar-header">
+      <img className="logo" src= {logo} alt="logo Inclusion"/>
 
-        <div className="login-form-title">
-          <img src={logo} alt="inclusion" />
+      <div className = { botaoOn ? 'menu-section on' : 'menu-section'} onClick={() => setBotaoOn(!botaoOn)}>
+           <div className="menu-toggle">
+           <div className="one"></div>
+              <div className="two"></div>
+              <div className="three"></div>
+
+           </div>
+
+           <nav>
+            <ul>
+
+              <li>
+                <a href="/">Página Inicial</a>
+              </li>
+              <li>
+                <a href="/equipamentos">Equipamentos</a>
+              </li>
+              <li>
+                <a href="/time">Time</a>
+              </li>
+              <li>
+                <a href="/contatos">Contatos</a>
+              </li>
+              <li>
+                <a className={botaoOn ? 'show' : 'hide'} href="/login">Voltar<FiLogOut className="FiLogOut" /> </a>
+
+              </li>
+            </ul>
+          </nav>
+
+          </div>
         </div>
-
-        <nav id="navbar" className="navbar navbar-expand-lg">
-
-          <button className="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-            <span className="navbar-toggle-icon"></span>
-          </button>
-
-          <ul className="navbar-nav item-list">
-
-            <li className="nav-item">
-              <a className="nav-link scrollto" href="/">Página
-                Inicial</a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link scrollto" href="/Equipamentos">Equipamentos</a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link scrollto" href="/Time">Time</a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link scrollto" href="/Contatos">Contatos</a>
-            </li>
-
-
-            <li className="nav-item">
-              <Link className="getstarted scrollto" to="/Login" >Login</Link>
-
-            </li>
-
-          </ul>
-
-          
-
-        </nav>
-
-      </div>
-
-    </header>
+        </div>
+      </header>
   )
 }
+
