@@ -78,6 +78,14 @@ main{
   position: relative;
   border-bottom: 2px solid #fff;
   margin-bottom: 37px;
+
+  svg{
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    color: #ffff;
+  }
+
 }
 
 .input {
@@ -250,5 +258,3 @@ main{
   color: #73c5eb;
   font-size: 14px;
 }
-
-

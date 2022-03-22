@@ -10,7 +10,8 @@ import { ShowPassword } from '..';
 import * as P from 'prop-types';
 
 export const FormularioDoador = ({ methodForm, idDoador }) => {
-
+  const isMethodForm = methodForm ? methodForm : 'post';
+  console.log(isMethodForm)
   const handleSubmitForm = (event) => {
     event.preventDefault();
 
@@ -34,7 +35,7 @@ export const FormularioDoador = ({ methodForm, idDoador }) => {
       return;
     }
 
-    methodForm == "post" ? saveDoador(values) : updateDoador(values)
+    isMethodForm == "post" ? saveDoador(values) : updateDoador(values)
   }
 
   const updateDoador = (values) => {
@@ -58,7 +59,7 @@ export const FormularioDoador = ({ methodForm, idDoador }) => {
         }
         mostrarMensagem("success", "", "Doador cadastrado com sucesso")
       })
-      .catch(error => mostrarMensagem("error", error.response.data.message, "Error ao cadastrar doador"));
+      .catch(() => mostrarMensagem("error", "Email já cadastrado", "Error ao cadastrar doador"));
 
 
   }
@@ -105,17 +106,17 @@ export const FormularioDoador = ({ methodForm, idDoador }) => {
   return (
     <main>
       <div className="cadastro-doador-infos">
-            <img src={logo} alt="Imagem da logo inclusion"/>
-            <h1> Bem-vindo ao Inclusion!</h1>
-            <h2> Preencha o formulário abaixo {methodForm == 'post' ?
-              "para ajudar quem realmente precisa!" : "para atualizar os seus dados pessoais"}</h2>
-          </div>
+        <img src={logo} alt="Imagem da logo inclusion" />
+        <h1> Bem-vindo ao Inclusion!</h1>
+        <h2> Preencha o formulário abaixo {isMethodForm == 'post' ?
+          "para ajudar quem realmente precisa!" : "para atualizar os seus dados pessoais"}</h2>
+      </div>
       <div className="cadastro-doador m-4 d-flex justify-content-center align-items-stretch">
         <div className="row col-md-3 col-lg-3 col-xl-4 ">
-          
+
           <div className="col dados-pessoais ">
             <form onSubmit={(evento) => handleSubmitForm(evento)}
-              >
+            >
 
               <label className="control-label">Nome</label>
               <input id="nome" placeholder="Digite o seu nome..." className="form-control" />
@@ -138,13 +139,13 @@ export const FormularioDoador = ({ methodForm, idDoador }) => {
 
               <label className="control-label">Senha    </label><ShowPassword idInput="senha" />
               <input id="senha" type="password" placeholder="Digite a sua senha" minLength="8" className="form-control" />
-              
+
 
               <label className="control-label">Senha    </label><ShowPassword idInput="senhaRepetida" />
               <input id="senhaRepetida" type="password" placeholder="Digite a senha" minLength="8" className="form-control" />
-              
 
-              <button type="button" className="btn btn-primary btn-lg"> Enviar</button>
+
+              <button type="submit" className="btn btn-primary btn-lg"> Enviar</button>
 
             </form>
           </div>

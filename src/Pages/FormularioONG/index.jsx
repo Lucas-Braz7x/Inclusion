@@ -31,13 +31,12 @@ export const FormularioONG = ({ idOng }) => {
 
     const msgError = validations(values, senhaRepetida);
 
-    methodForm == "post" ? saveDoador(values) : updateDoador(values)
-    console.log("id", idOng)
-    if (msgError.length > 0 && idOng) {
+    if (msgError.length > 0 && !idOng) {
       msgError.map((message) => mostrarMensagem("error", message, "Atenção"));
 
       return;
     }
+    methodForm == "post" ? saveDoador(values) : updateDoador(values)
 
   }
 
@@ -71,7 +70,8 @@ export const FormularioONG = ({ idOng }) => {
   const validations = (values, senhaRepetida) => {
     const msg = [];
 
-    if (!values.nomeOng) {
+    if (!values.nomeOng && values.nomeOng == '') {
+      console.log('entrou aqui')
       msg.push("Preencha o campo nome");
     }
     if (!values.email) {
@@ -120,19 +120,18 @@ export const FormularioONG = ({ idOng }) => {
     if (values.senha !== senhaRepetida) {
       msg.push("As senhas devem ser iguais")
     }
-
     return msg;
   }
   return (
     <main>
       <div className="cadastro-doador-infos">
-            <img src={logo} alt="Imagem da logo inclusion" /> 
-            <h1> Bem-vindo ao Inclusion!</h1>
-            <h2> Preencha o formulário abaixo para ajudar quem realmente precisa!</h2>
-          </div>
+        <img src={logo} alt="Imagem da logo inclusion" />
+        <h1> Bem-vindo ao Inclusion!</h1>
+        <h2> Preencha o formulário abaixo para ajudar quem realmente precisa!</h2>
+      </div>
       <div className="cadastro-ong m-4 d-flex justify-content-center align-items-stretch">
         <div className="row col-md-3 col-lg-3 col-xl-4">
-          
+
           <div className="col dados-pessoais">
             <form onSubmit={(evento) => handleSubmitForm(evento)}>
               <label className="control-label">Nome da ONG</label>
@@ -157,15 +156,15 @@ export const FormularioONG = ({ idOng }) => {
               <label className="control-label">CEP</label>
               <input id="cepOng" minLength={2} maxLength={2} placeholder="Digite o CEP da ong" className="form-control" />
 
-              <label className="control-label">Senha</label><ShowPassword idInput={"senhaOng"} />
+              <label className="control-label">Senha: </label><ShowPassword idInput={"senhaOng"} />
               <input id="senhaOng" minLength={8} type='password' placeholder="Digite a senha" className="form-control" />
-              
 
-              <label className="control-label">Senha</label><ShowPassword idInput={"senhaOngRepetida"} />
+
+              <label className="control-label">Repita a senha: </label><ShowPassword idInput={"senhaOngRepetida"} />
               <input id="senhaOngRepetida" minLength={8} type='password' placeholder="Digite a senha" className="form-control" />
-              
 
-              <button type="button" className="btn btn-primary btn-lg" > Enviar</button>
+
+              <button type="submit" className="btn btn-primary btn-lg" > Enviar</button>
 
             </form>
           </div>
