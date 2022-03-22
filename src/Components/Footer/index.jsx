@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.scss';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from 'react-router-dom';
 
 export const Footer = () => {
   return (
@@ -9,12 +10,10 @@ export const Footer = () => {
       <div className="container">
         <ul>
 
-          <li><a >Sobre</a></li>
-          <li><a >Time</a></li>
-          <li><a >Equipamentos</a></li>
-          <li><a >Ong Amigas</a></li>
-          <li><a >Doadores</a></li>
-          <li><a href="/Contatos">Contato</a></li>
+          <li><Link to="/"  >Página Inicial</Link></li>
+          <li><Link to="/time"  >Time</Link></li>
+          <li><Link to="/equipamentos">Equipamentos</Link></li>
+          <li><Link to="/contatos">Contato</Link></li>
 
         </ul>
         <p className="footer-copyright">© 2021 Copyright - Squad 42</p>

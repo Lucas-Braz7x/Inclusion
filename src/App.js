@@ -13,7 +13,7 @@ import { Cadastro } from './Pages/Cadastro';
 import VLibras from "@djpfs/react-vlibras";
 import { FormularioONG } from './Pages/FormularioONG';
 import { FormularioDoador } from './Components/FormularioDoador';
-
+import {Senha} from './Components/Senha';
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
             <Route element={<FormularioDoador />} path="/cadastro/doador" />
             <Route element={<Time />} path="/time" />
             <Route element={<Login />} path="/login" />
-
+            <Route element={<Senha />} path="/alterarsenha" />
           </Routes>
           <Footer />
           <VLibras />

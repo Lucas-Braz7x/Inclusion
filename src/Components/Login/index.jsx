@@ -82,8 +82,8 @@ export const Login = () => {
   return (
 
     <main>
-      
-        
+
+
           <div className="wrap-login justify-content-center">
             <form className="login-form"  onSubmit={(evento) => handleSubmit(evento)}>
               <span className="login-form-title"> Bem vindo! </span>
@@ -104,21 +104,21 @@ export const Login = () => {
               </div>
               <div className="text-center">
                 <span className="txt1">Não possui conta? </span>
-                <Link className="form-doador" to="/cadastro/doador">Cadastrar Doador.</Link>
+                <Link className="form-doador" to="/cadastro/doador">Cadastrar como Doador.</Link>
               </div>
               <div className="text-center">
-                <span className="txt1">Não possui conta? </span>
-                <Link className="form-ong" to="/cadastro/ong">Cadastrar ONG.</Link>
+                <span className="txt1">Você é Ong? </span>
+                <Link className="form-ong" to="/cadastro/ong">Cadastrar sua ONG.</Link>
               </div>
               <div className="text-center">
                 <span className="txt1">Esqueceu a Senha? </span>
-                <Link className="senha" to="#">Esqueci minha senha.</Link>
+                <Link className="senha" to="/alterarsenha">Esqueci minha senha.</Link>
               </div>
 
             </form>
           </div>
-        
-      
+
+
     </main>
   )
 }

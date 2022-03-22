@@ -51,13 +51,22 @@ header nav ul li a {
   font-family: 'Roboto', sans-serif ;
   font-size: 0.8rem;
   padding: 2.0rem;
-  transition: all 250ms linear 0s;
+
 }
 
 
 
 header nav ul li a:hover {
-  font-size: 1.0rem;
+  background: #47b2e4;
+
+  text-decoration: none;
+
+  transition: 0.2s;
+  margin-top: 6px;
+  line-height: 1;
+  top: 2px;
+  border-radius: 10px;
+
 
 }
 header nav ul li a{
@@ -106,7 +115,7 @@ header nav ul li a .FiLogOut{
     height: 3px;
     width: 100%;
     margin: 8px auto;
-    transition-duration: 0.3s;
+    transition-duration: 0.2s;
   }
   .menu-toggle{
     width: 30px;
@@ -121,8 +130,9 @@ header nav ul li a .FiLogOut{
     top:0;
     left: 0px;
     width: 100%;
-    height: 50%;
+    height: 100%;
     background: #37517e;
+    opacity: 0.9;
     z-index: 10; /*camada acima, evitar o scrool dos itens a baixo*/
     display: flex;
     justify-content: center;
@@ -164,7 +174,7 @@ header nav ul li a .FiLogOut{
 
   .menu-section.on nav ul a{
    transition-duration:  0.5s;
-   font-size: 1.0rem;
+   font-size: 1.6rem;
     display: block;
     color: #fff;
     padding: 1.2rem;

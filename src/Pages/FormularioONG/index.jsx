@@ -5,6 +5,7 @@ import logo from '../../assets/INCLUSION_PRETO.png';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 
+
 export const FormularioONG = () => {
 
   return (
@@ -15,8 +16,8 @@ export const FormularioONG = () => {
             <h2> Preencha o formulário abaixo para ajudar <br></br>quem realmente precisa!</h2>
           </div>
       <div className="cadastro-ong m-4 d-flex justify-content-center align-items-stretch">
-        <div className="row col-md-3 col-lg-3 col-xl-4">
-          
+        <div className="row col-md-7 col-lg-7 col-xl-7">
+
           <div className="col dados-pessoais">
             <form >
               <label className="control-label">Nome da ONG</label>

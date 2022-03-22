@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../Login/assets/INCLUSION1.png';
+import logo from '../../assets/INCLUSION.png';
 //import { MdReorder } from "react-icons/md";
 import { FiLogOut } from 'react-icons/fi';
 
@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <header>
     <div className="container">
-      
+
       <div className="navbar-header">
       <img className="logo" src= {logo} alt="logo Inclusion"/>
 
@@ -38,6 +38,9 @@ export const Header = () => {
               </li>
               <li>
                 <a href="/contatos">Contatos</a>
+              </li>
+              <li>
+                <a href="/login">Login</a>
               </li>
               <li>
                 <a className={botaoOn ? 'show' : 'hide'} href="/login">Voltar<FiLogOut className="FiLogOut" /> </a>
