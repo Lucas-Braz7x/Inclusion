@@ -10,7 +10,7 @@ import { ShowPassword } from '..';
 import * as P from 'prop-types';
 
 export const FormularioDoador = ({ methodForm, idDoador }) => {
-  console.log(idDoador)
+
   const handleSubmitForm = (event) => {
     event.preventDefault();
 
