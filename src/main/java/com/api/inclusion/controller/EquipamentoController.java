@@ -96,24 +96,36 @@ public class EquipamentoController {
 	@PatchMapping(value="{id}")
 	public Equipamentos autualizarEquipamento(
 			@PathVariable Long id, 
-			@RequestBody @Validated Equipamentos equipamento,
+			@RequestBody Equipamentos equipamento,
 			@RequestHeader("Authorization") String authorizationToken) {
 		
 		String token = authorizationToken.split(" ")[1];
 		Claims doadorToken = jwtService.obterClaims(token);
 		
-		Doadores doador = new Doadores();
-		
-		preencherInformacaoDoador(doadorToken, doador);
-		
 		boolean existEquipamento = equipamentosRepository.existsById(id);
 		
 		
 		if(existEquipamento) {
-	
-			equipamento.setDoador(doador);
-			equipamento.setId(id);
-			return equipamentosRepository.saveAndFlush(equipamento);				
+			Equipamentos equipamentoExistente = equipamentosRepository.getById(id);
+			System.out.println(equipamentoExistente);
+			
+			if(equipamento.getNomeEquipamento() != null || equipamento.getNomeEquipamento() == "") {
+				equipamentoExistente.setNomeEquipamento(equipamento.getNomeEquipamento());
+			}
+			if(equipamento.getDescricao() != null || equipamento.getDescricao() == "") {
+				equipamentoExistente.setDescricao(equipamento.getDescricao());
+			}
+			if(equipamento.getTipoDeficiencia() != null || equipamento.getTipoDeficiencia() == "") {
+				equipamentoExistente.setTipoDeficiencia(equipamento.getTipoDeficiencia());
+			}
+			if(equipamento.getImageUrl() != null || equipamento.getImageUrl() == "sem imagem") {
+				equipamentoExistente.setImageUrl(equipamento.getImageUrl());
+			}
+			if(equipamento.getImageHasDelete() != null || equipamento.getImageHasDelete() == "sem imagem") {
+				equipamentoExistente.setImageHasDelete(equipamento.getImageHasDelete());
+			}
+			
+			return equipamentosRepository.saveAndFlush(equipamentoExistente);				
 			
 		}else {
 			throw new Error("Id informado não foi encontrado na base de dados");

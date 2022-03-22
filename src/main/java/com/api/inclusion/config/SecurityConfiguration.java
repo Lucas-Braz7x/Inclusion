@@ -58,6 +58,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			http.csrf().disable().authorizeRequests()
 					.antMatchers(HttpMethod.POST, "/doador/cadastro").permitAll()
 					.antMatchers(HttpMethod.POST, "/doador/login").permitAll()
+					.antMatchers(HttpMethod.PATCH, "/doador/atualizar").permitAll()
+					.antMatchers(HttpMethod.PATCH, "/ong/atualizar").permitAll()
 					.antMatchers(HttpMethod.POST, "/ong/cadastro").permitAll()
 					.antMatchers(HttpMethod.POST, "/ong/login").permitAll()
 					.antMatchers(HttpMethod.POST, "/image").permitAll()

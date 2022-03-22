@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -54,6 +55,30 @@ public class OngController {
 		return ongsRepository.findAll();
 	}
 	
+	@PatchMapping("/atualizar")
+	public String atualizarSenha(@RequestBody Ongs ong) {
+		
+		boolean existOng = ongsRepository.existsByEmail(ong.getEmail());
+		
+		if(existOng) {
+			try {
+				Optional<Ongs> ongBanco = ongsRepository.findByEmail(ong.getEmail());
+				Ongs ongAtual = ongsRepository.getById(ongBanco.get().getId());
+				String senhaCodificada = encoder.encode(ong.getSenha());
+				ongAtual.setSenha(senhaCodificada);
+				ongsRepository.saveAndFlush(ongAtual);
+				
+				return "Senha atualizada";
+				
+			}catch (Exception e) {
+				throw new Error("ERROR: " + e.getMessage());
+			}
+		}else {
+			throw new Error("Usuário não encontrado, informe outro email");
+		}
+	}
+	
+	
 	//Cadastro
 	@PostMapping("/cadastro")
 	public Ongs salvarOng(@RequestBody @Validated Ongs ong) {
@@ -61,7 +86,7 @@ public class OngController {
 		boolean exist = ongsRepository.existsByEmail(ong.getEmail());
 		boolean existEmailDoador = doadorRepository.existsByEmail(ong.getEmail());
 		System.out.println(ong.getEmail() + " -  " + exist);
-		if(exist && existEmailDoador) {
+		if(exist || existEmailDoador) {
 			throw new Error("Email já cadastrado");
 		}
 		cripoSenha(ong);
@@ -80,14 +105,42 @@ public class OngController {
 	}
 	
 	//Atualização
-	@PutMapping(value="{id}")
+	@PatchMapping(value="/{id}")
 	public Ongs autualizarOng(@PathVariable Long id, @RequestBody Ongs ong) {
-		
+				
 		boolean existOng = ongsRepository.existsById(id);
-		
 		if(existOng) {
-			cripoSenha(ong);
-			return ongsRepository.saveAndFlush(ong);
+			Ongs ongExistente = ongsRepository.getById(id);
+			
+			if(ong.getNomeOng() != null && ong.getNomeOng() != "") {
+				ongExistente.setNomeOng(ong.getNomeOng());
+			}
+			if(ong.getEmail() != null && ong.getEmail() != "") {
+				ongExistente.setEmail(ong.getEmail());
+			}
+			if(ong.getTelefone() != null && ong.getTelefone() != "") {
+				ongExistente.setTelefone(ong.getTelefone());
+			}
+			if(ong.getCnpj() != null && ong.getCnpj() != "") {
+				ongExistente.setCnpj(ong.getCnpj());
+			}
+			if(ong.getEndereco() != null && ong.getEndereco() != "") {
+				ongExistente.setEndereco(ong.getEndereco());
+			}
+			if(ong.getCep() != null && ong.getCep() != "") {
+				ongExistente.setCep(ong.getCep());
+			}
+			if(ong.getEndereco() != null && ong.getEndereco() != "") {
+				ongExistente.setEndereco(ong.getEndereco());
+			}
+			if(ong.getEstado() != null && ong.getEstado() != "") {
+				ongExistente.setEstado(ong.getEstado());
+			}
+			if(ong.getSenha() != null && ong.getSenha() != "") {
+				cripoSenha(ong);
+				ongExistente.setSenha(ong.getSenha());
+			}
+			return ongsRepository.saveAndFlush(ongExistente);
 			
 		}else {
 			throw new Error("Id informado não foi encontrado na base de dados");

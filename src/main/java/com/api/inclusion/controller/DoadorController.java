@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.inclusion.error.ErrorAuth;
 import com.api.inclusion.model.Doadores;
 import com.api.inclusion.repository.DoadorRepository;
+import com.api.inclusion.repository.OngsRepository;
 import com.api.inclusion.security.Token;
 import com.api.inclusion.service.JwtService;
 
@@ -31,13 +32,11 @@ import io.jsonwebtoken.Claims;
 @RequestMapping(value="/doador")
 public class DoadorController {
 
-	/* ALTERNATIVA PRO @AUTOWIRED
-	 * public DoadorController(DoadorRepository DoadorRepository) {
-		this.DoadorRepository = DoadorRepository;
-	}
-	*/
 	@Autowired
 	private DoadorRepository doadorRepository;
+	
+	@Autowired
+	private OngsRepository ongsRepository;
 	
 	@Autowired
 	private JwtService jwtService;
@@ -54,13 +53,37 @@ public class DoadorController {
 		return doadorRepository.findAll();
 	}
 	
+	@PatchMapping("/atualizar")
+	public String atualizarSenha(@RequestBody Doadores doador) {
+		
+		boolean existDoador = doadorRepository.existsByEmail(doador.getEmail());
+		
+		if(existDoador) {
+			try {
+				Optional<Doadores> doadorBanco = doadorRepository.findByEmail(doador.getEmail());
+				Doadores doadorAtual = doadorRepository.getById(doadorBanco.get().getId());
+				String senhaCodificada = encoder.encode(doador.getSenha());
+				doadorAtual.setSenha(senhaCodificada);
+				doadorRepository.saveAndFlush(doadorAtual);
+				
+				return "Senha atualizada";
+				
+			}catch (Exception e) {
+				throw new Error("ERROR: " + e.getMessage());
+			}
+		}else {
+			throw new Error("Usuário não encontrado, informe outro email");
+		}
+	}
+	
 	//Cadastro
 	@PostMapping("/cadastro")
 	public Doadores salvarDoador(@RequestBody @Validated Doadores doador) {
 		
 		boolean exist = doadorRepository.existsByEmail(doador.getEmail());
+		boolean existOng = ongsRepository.existsByEmail(doador.getEmail());
 		System.out.println(doador.getEmail() + " -  " + exist);
-		if(exist) {
+		if(exist || existOng) {
 			throw new Error("Email já cadastrado");
 		}
 		doador.setRole("USER");
@@ -88,12 +111,9 @@ public class DoadorController {
 		if(existDoador) {
 			String token = authorizationToken.split(" ")[1];
 			Doadores doadorExistente = doadorRepository.getOne(id);
-			System.out.println(doadorExistente.getEmail());
-			System.out.println(doadorExistente.getNomeDoador());
-			System.out.println(doadorExistente.getEndereco());
-			System.out.println(doadorExistente.getTelefone());
+			
 			if(validarId(token, doadorExistente.getId())) {
-				if(doador.getEmail() != null) {
+				if(doador.getEmail() != null && doador.getEmail() != "" ) {
 					if(!doadorRepository.existsByEmail(doador.getEmail())) {
 						doadorExistente.setEmail(doador.getEmail());
 					}else {
@@ -101,33 +121,29 @@ public class DoadorController {
 					}					
 				}
 				
-				if(doador.getNomeDoador() != null) {
+				if(doador.getNomeDoador() != null && doador.getNomeDoador() !="") {
 					doadorExistente.setNomeDoador(doador.getNomeDoador());
 				}
-				if(doador.getSenha() != null && doador.getSenha().length() >= 8) {
+				if(doador.getSenha() != null && doador.getSenha().length() >= 8 && doador.getSenha() !="") {
 					cripoSenha(doador);
 					doadorExistente.setSenha(doador.getSenha());
 				}
-				if(doador.getCep() != null) {
+				if(doador.getCep() != null && doador.getCep() !="") {
 					doadorExistente.setCep(doador.getCep());
 				}
-				if(doador.getEndereco() != null) {
+				if(doador.getEndereco() != null && doador.getEndereco() !="") {
 					doadorExistente.setEndereco(doador.getEndereco());
 				}
-				if(doador.getEstado() != null) {
+				if(doador.getEstado() != null && doador.getEstado() !="") {
 					doadorExistente.setEstado(doador.getEstado());
 				}
-				if(doador.getTelefone() != null) {
+				if(doador.getTelefone() != null && doador.getTelefone() !="") {
 					doadorExistente.setTelefone(doador.getTelefone());
-				}
-				/*if(doador.() != null) {
-					doadorExistente.setTelefone(doador.getTelefone());
-				}*/
-				
+				}				
+				return doadorRepository.saveAndFlush(doadorExistente);
 			}else {
 				throw new Error("Não foi possível atualizar, IDs diferentes");	
 			}
-			return doadorRepository.saveAndFlush(doadorExistente);
 			
 		}else {
 			throw new Error("Id informado não foi encontrado na base de dados");
