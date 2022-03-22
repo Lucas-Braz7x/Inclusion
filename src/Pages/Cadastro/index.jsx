@@ -26,7 +26,7 @@ export const Cadastro = () => {
         {login ? "ir para Cadastro" : "ir para login"}
       </button>
       {
-        login ? <Login></Login> : <FormularioDoador />
+        login ? <Login></Login> : <FormularioDoador methodForm='post' />
       }
     </main>
   )

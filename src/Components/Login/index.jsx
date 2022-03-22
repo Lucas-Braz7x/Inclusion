@@ -11,7 +11,7 @@ import 'toastr/build/toastr.min.js';
 import 'toastr/build/toastr.css';
 //import { Button } from '../UI/Button';
 
-import  Logo from "./assets/inclusion-logo.png";
+import Logo from "./assets/inclusion-logo.png";
 
 export const Login = () => {
   const history = useNavigate();
@@ -49,8 +49,8 @@ export const Login = () => {
         mostrarMensagem("success", "Usuário autenticado", "Bem-vindo");
         history('/');
       })
-      .catch(e => {
-        mostrarMensagem("error", e.response.data, "Falha ao autenticar usuário")
+      .catch(error => {
+        mostrarMensagem("error", error.response.data.message, "Falha ao autenticar usuário")
       });
 
   }
@@ -84,55 +84,55 @@ export const Login = () => {
     <main>
 
 
-<div className="container">
-  <div className="container-login">
-    <div className="wrap-login">
-    <form className="login-form"  onSubmit={(evento) => handleSubmit(evento)}>
-    <span className="login-form-title"> Bem vindo! </span>
+      <div className="container">
+        <div className="container-login">
+          <div className="wrap-login">
+            <form className="login-form" onSubmit={(evento) => handleSubmit(evento)}>
+              <span className="login-form-title"> Bem vindo! </span>
 
-    <span className="login-form-title">
-              <img src={Logo} alt="inclusion" />
-            </span>
+              <span className="login-form-title">
+                <img src={Logo} alt="inclusion" />
+              </span>
 
-            <div className="wrap-input">
-              <input
-                className= "has-val input"
-                type="email"
+              <div className="wrap-input">
+                <input
+                  className="has-val input"
+                  type="email"
 
-                onChange={(e) => setUsuarioEmail(e.target.value)}
-              />
-              <span className="focus-input" data-placeholder="Email"></span>
-            </div>
+                  onChange={(e) => setUsuarioEmail(e.target.value)}
+                />
+                <span className="focus-input" data-placeholder="Email"></span>
+              </div>
 
-            <div className="wrap-input">
-              <input
-                className="has-val input"
-                type="password"
+              <div className="wrap-input">
+                <input
+                  className="has-val input"
+                  type="password"
 
-                onChange={(e) => setUsuarioSenha(e.target.value)}
-              />
-              <span className="focus-input" data-placeholder="Password"></span>
-            </div>
-            <div className="container-login-form-btn">
-              <button onClick={handleSubmit} type= "submit" className="login-form-btn" >Login</button>
-            </div>
-            <div className="text-center">
-            <span className="txt1">Não possui conta? </span>
-          <Link className="txt2" to="/cadastro">
-            Criar conta.
-          </Link>
-            </div>
+                  onChange={(e) => setUsuarioSenha(e.target.value)}
+                />
+                <span className="focus-input" data-placeholder="Password"></span>
+              </div>
+              <div className="container-login-form-btn">
+                <button onClick={handleSubmit} type="submit" className="login-form-btn" >Login</button>
+              </div>
+              <div className="text-center">
+                <span className="txt1">Não possui conta? </span>
+                <Link className="txt2" to="/cadastro">
+                  Criar conta.
+                </Link>
+              </div>
 
-            <div className="text-center">
-            <span className="txt1">Esqueceu a Senha? </span>
-          <Link className="txt2" to="#">
-            Esqueci minha senha.
-          </Link>
+              <div className="text-center">
+                <span className="txt1">Esqueceu a Senha? </span>
+                <Link className="txt2" to="#">
+                  Esqueci minha senha.
+                </Link>
+              </div>
+
+            </form>
           </div>
-
-        </form>
-      </div>
-      </div>
+        </div>
       </div>
     </main>
   )

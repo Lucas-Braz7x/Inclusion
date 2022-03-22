@@ -7,3 +7,4 @@ export { EquipamentoCard } from './EquipamentoCard';
 
 /*UI*/
 export { Button } from './UI/Button';
+export { ShowPassword } from './UI/ShowPassword';
