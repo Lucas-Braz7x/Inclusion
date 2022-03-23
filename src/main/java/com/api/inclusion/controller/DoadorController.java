@@ -171,12 +171,9 @@ public class DoadorController {
 	
 	//Excluir
 	@DeleteMapping(value ="{id}")
-	public void deletarDoador(@PathVariable Long id, @RequestHeader("Authorization") String authorizationToken) {
+	public void deletarDoador(@PathVariable Long id) {
 		Optional<Doadores> doador = doadorRepository.findById(id);
-		
-		String token = authorizationToken.split(" ")[1];
-		
-		if(doador.isPresent() && validarId(token, id)) {
+		if(doador.isPresent()) {
 			doadorRepository.deleteById(id);
 		}else {
 			throw new Error("O Id informado não tem acesso para excluir o id desejado");
