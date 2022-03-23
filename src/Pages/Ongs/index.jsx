@@ -19,24 +19,25 @@ export const Ongs = () => {
         <div className='container'>
           <div className="ongContainer">
             {dataArray.map((ong, indice) => (
-              <div className='ongContent' key={indice}>
-                <div >
-                  <h1>{ong.nomeOng}</h1>
-
+              !ong.nomeOng ? <></> :
+                <div className='ongContent' key={indice}>
+                  <div>
+                    <div >
+                      <h1>{ong.nomeOng}</h1>
+                    </div>
+                    <div>
+                      <p>Email: {ong.email}</p>
+                      <p>Contato: {ong.telefone}</p>
+                    </div>
+                    <div>
+                      <p>Endereço: {ong.endereco} - {ong.estado}</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p>Email: {ong.email}</p>
-                  <p>Contato: {ong.telefone}</p>
-                </div>
-                <div>
-                  <p>Endereço: {ong.endereco} - {ong.estado} - {ong.cep}</p>
-                </div>
-              </div>
             ))}
           </div>
         </div>
       }
-      <h1>ONGS</h1>
     </main>
   )
 }

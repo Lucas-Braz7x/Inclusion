@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../assets/INCLUSION_PRETO.png';
-import { api } from '../../Service/index';
+import { api, registrarToken } from '../../Service/index';
 import { mostrarMensagem } from '../Toastr';
 import 'toastr/build/toastr.min.js';
 import 'toastr/build/toastr.css';
@@ -11,6 +11,13 @@ import * as P from 'prop-types';
 
 export const FormularioDoador = ({ methodForm, idDoador }) => {
   const isMethodForm = methodForm ? methodForm : 'post';
+
+
+  useEffect(() => {
+    if (idDoador) {
+      registrarToken(localStorage.getItem("USUARIO_LOGADO"));
+    }
+  })
   console.log(isMethodForm)
   const handleSubmitForm = (event) => {
     event.preventDefault();
@@ -45,7 +52,7 @@ export const FormularioDoador = ({ methodForm, idDoador }) => {
         if (response.status == 200) {
           document.querySelector('form').reset();
         }
-        mostrarMensagem("success", "", "Doador atualizado com sucesso")
+        mostrarMensagem("success", "", "Doador atualizado com sucesso");
       })
       .catch(error => mostrarMensagem("error", error.response.data.message, "Error ao atualizar doador"));
   }
@@ -60,8 +67,6 @@ export const FormularioDoador = ({ methodForm, idDoador }) => {
         mostrarMensagem("success", "", "Doador cadastrado com sucesso")
       })
       .catch(() => mostrarMensagem("error", "Email já cadastrado", "Error ao cadastrar doador"));
-
-
   }
 
   const validations = (values, senhaRepetida) => {
@@ -112,7 +117,7 @@ export const FormularioDoador = ({ methodForm, idDoador }) => {
           "para ajudar quem realmente precisa!" : "para atualizar os seus dados pessoais"}</h2>
       </div>
       <div className="cadastro-doador m-4 d-flex justify-content-center align-items-stretch">
-        <div className="row col-md-3 col-lg-3 col-xl-4 ">
+        <div id='formContainer' className="row col-md-3 col-lg-3 col-xl-4 ">
 
           <div className="col dados-pessoais ">
             <form onSubmit={(evento) => handleSubmitForm(evento)}
@@ -145,6 +150,9 @@ export const FormularioDoador = ({ methodForm, idDoador }) => {
               <input id="senhaRepetida" type="password" placeholder="Digite a senha" minLength="8" className="form-control" />
 
 
+              <div>
+
+              </div>
               <button type="submit" className="btn btn-primary btn-lg"> Enviar</button>
 
             </form>

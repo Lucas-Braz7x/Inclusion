@@ -14,6 +14,7 @@ import { FormularioONG } from './Pages/FormularioONG';
 import { FormularioDoador } from './Components/FormularioDoador';
 import { Senha } from './Components/Senha';
 import { Ongs } from './Pages/Ongs';
+import { Config } from './Pages/Config';
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Contatos />} path="/contatos" />
+            <Route element={<Config />} path="/config" />
             <Route element={<Equipamentos methodForm='post' />} path="/equipamentos" />
             <Route element={<FormularioONG methodForm='post' />} path="/cadastro/ong" />
             <Route element={<FormularioDoador />} path="/cadastro/doador" />

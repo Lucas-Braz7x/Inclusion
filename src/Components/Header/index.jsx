@@ -41,7 +41,6 @@ export const Header = () => {
               <li>
                 <Link className="text-white" to="/login">Login</Link>
               </li>
-
             </ul>
           </nav>
 

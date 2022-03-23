@@ -48,8 +48,30 @@
 .portfolio #portfolio-flters {
   list-style: none;
   margin-bottom: 20px;
+
+  @media(max-width: 630px) {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    overflow-x: scroll;
+    padding-left: 200px;
+    padding-right: 25px;
+  }
+  @media(max-width: 530px) {
+    width: 450px;
+    padding-left: 200px;
+    padding-right: 10px;
+  }
+
+  @media(max-width: 400px) {
+    width: 400px;
+    padding-left: 250px;
+    padding-right: 50px;
+  }
+
 }
 .portfolio #portfolio-flters li {
+
   cursor: pointer;
   display: inline-block;
   margin: 10px 5px;

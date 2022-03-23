@@ -5,7 +5,9 @@
   align-items: center;
 
   text-align: center;
-  margin: 20px auto;
+  margin: 0px auto;
+  margin-bottom: 20px;
+  padding-top: -60px;
 }
 
 .cadastro-ong img,
@@ -46,5 +48,15 @@ button{
   }
   .cadastro-doador-infos h2{
     font-size: 1rem;
+  }
+}
+
+#formContainer{
+  position: relative;
+  #buttonExcluir{
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+
   }
 }
