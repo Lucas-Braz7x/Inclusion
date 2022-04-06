@@ -58,7 +58,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			http.csrf().disable().authorizeRequests()
 					.antMatchers(HttpMethod.POST, "/doador/cadastro").permitAll()
 					.antMatchers(HttpMethod.POST, "/doador/login").permitAll()
-					.antMatchers(HttpMethod.GET, "/").permitAll()
+					.antMatchers(HttpMethod.PATCH, "/doador/atualizar").permitAll()
+					.antMatchers(HttpMethod.PATCH, "/ong/atualizar").permitAll()
+					.antMatchers(HttpMethod.POST, "/ong/cadastro").permitAll()
+					.antMatchers(HttpMethod.POST, "/ong/login").permitAll()
+					.antMatchers(HttpMethod.POST, "/image").permitAll()
+					.antMatchers(HttpMethod.GET, "/ong").permitAll()
+					.antMatchers(HttpMethod.GET, "/equipamento").permitAll()
 					.anyRequest().authenticated()
 					.and()
 					.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)//Evita cookie e sempre precisa da autenticação
@@ -78,7 +84,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		@Bean
 		public FilterRegistrationBean<CorsFilter> corsFilter(){
 			List<String> all = Arrays.asList("*");
-			List<String> allOrigins = Arrays.asList("/**", "http://localhost:3000");
+			List<String> allOrigins = Arrays.asList("/**", "http://localhost:3000", "https://inclusion-recode.netlify.app/","https://inclusion-recode.vercel.app/");
 			CorsConfiguration config = new CorsConfiguration();
 			config.setAllowedMethods(all);//Permite todos os métodos
 			config.setAllowedOrigins(allOrigins);//Permite as origins de acesso

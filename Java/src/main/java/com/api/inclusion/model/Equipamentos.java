@@ -28,6 +28,15 @@ public class Equipamentos {
 	
 	@Column(nullable = false, length = 50)
 	private String descricao;
+	
+	@Column(nullable = true)
+	private String imageUrl;
+	
+	@Column(nullable = true)
+	private String imageHasDelete;
+	
+	@Column(nullable = true)
+	private String tipoDeficiencia;
 
 	@ManyToOne
 	@JoinColumn(name="Doadores", nullable = false)

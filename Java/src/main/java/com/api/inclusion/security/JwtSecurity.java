@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.api.inclusion.model.Doadores;
+import com.api.inclusion.model.Ongs;
 import com.api.inclusion.service.JwtService;
 
 import io.jsonwebtoken.Claims;
@@ -46,12 +47,45 @@ public class JwtSecurity implements JwtService {
 				.setSubject(doador.getEmail())
 				.claim("id", doador.getId())
 				.claim("nome", doador.getNomeDoador())
-				.claim("idade", doador.getIdade())
+				.claim("email", doador.getEmail())
 				.claim("telefone", doador.getTelefone())
 				.claim("cep", doador.getCep())
 				.claim("endereco", doador.getEndereco())
 				.claim("estado", doador.getEstado())
 				.claim("role", doador.getRole())
+				.claim("horaExpiracaoToken", horaExpiracaoToken)
+				.signWith(SignatureAlgorithm.HS512, chaveAssinatura)
+				.compact();
+		
+		return token;
+	}
+	
+	@Override
+	public String gerarToken(Ongs ong) {
+		
+		int expToken = Integer.valueOf(expiracaoToken);
+		
+		//Transforma o tempo de expiração para data e formata em hh:mm
+		LocalDateTime dataHoraExpiracao = LocalDateTime.now().plusMinutes(expToken);
+		Instant instant = dataHoraExpiracao.atZone(ZoneId.systemDefault()).toInstant();
+		
+		Date data = Date.from(instant);
+		
+		String horaExpiracaoToken = dataHoraExpiracao.toLocalTime()
+				.format(DateTimeFormatter.ofPattern("HH:mm"));
+		
+		//Informações contidas no token
+		String token = Jwts.builder()
+				.setExpiration(data)
+				.setSubject(ong.getEmail())
+				.claim("id", ong.getId())
+				.claim("nome", ong.getNomeOng())
+				.claim("email", ong.getEmail())
+				.claim("telefone", ong.getTelefone())
+				.claim("cep", ong.getCep())
+				.claim("endereco", ong.getEndereco())
+				.claim("estado", ong.getEstado())
+				.claim("role", ong.getRole())
 				.claim("horaExpiracaoToken", horaExpiracaoToken)
 				.signWith(SignatureAlgorithm.HS512, chaveAssinatura)
 				.compact();

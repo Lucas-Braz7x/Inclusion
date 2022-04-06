@@ -25,7 +25,7 @@ public class Ongs extends DadosCadastro{
 	private String nomeOng;
 	
 	@Column(nullable = false)
-	private int cnpj;
+	private String cnpj;
 	
 
 }
