@@ -1,0 +1,39 @@
+.ongContainer{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  max-width: 100%;
+  min-width: 190px;
+  width: auto;
+  margin: 20px 0;
+
+  .ongContent{
+    display: flex;
+    flex-direction: column;
+
+    text-align: left;
+    padding: 5px;
+    border-radius: 50px;
+    box-shadow: 0 0 5px rgba(0,0,0, .5);
+    background: #37517e;
+    color: #fff;
+
+    & > div{
+      margin: 0px 20px;
+    }
+
+    div > h1{
+      text-align: center;
+    }
+
+    transition: transform .3s, filter .3s;
+
+    &:hover{
+      filter: brightness(1.1);
+      cursor: pointer;
+      transform: scale(.9);
+    }
+
+  }
+}

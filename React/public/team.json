@@ -1,0 +1,34 @@
+[
+  {
+    "nome": "Ana Crisraele",
+    "profissao": "Desenvolvedor Full Stack Junior",
+    "descricao": "Explicabo voluptatem mollitia et repellat qui dolorum quasi",
+    "github": "https://github.com/crisraele",
+    "linkedin": "https://www.linkedin.com/in/anacrisraele/",
+    "foto": "../../assets/team/team-1.jpg"
+  },
+  {
+    "nome": "Leonardo Emerson",
+    "profissao": "Desenvolvedor Full Stack Junior",
+    "descricao": "Explicabo voluptatem mollitia et repellat qui dolorum quasi",
+    "github": "https://github.com/leonardoemerson",
+    "linkedin": "https://www.linkedin.com/in/leonardoemerson/",
+    "foto": ""
+  },
+  {
+    "nome": "Lucas Braz",
+    "profissao": "Desenvolvedor Full Stack Junior",
+    "descricao": "Explicabo voluptatem mollitia et repellat qui dolorum quasi",
+    "github": "https://github.com/Lucas-Braz7x",
+    "linkedin": "https://www.linkedin.com/in/lucas-braz-dutra/",
+    "foto": ""
+  },
+  {
+    "nome": "Victória Alves",
+    "profissao": "Desenvolvedor Full Stack Junior",
+    "descricao": "Explicabo voluptatem mollitia et repellat qui dolorum quasi",
+    "github": "https://github.com/vicalves18",
+    "linkedin": "https://www.linkedin.com/in/victoria-alves-lucena-da-silva-695b241aa/",
+    "foto": ""
+  }
+]

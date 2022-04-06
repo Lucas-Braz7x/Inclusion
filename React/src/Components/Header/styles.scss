@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+
+.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+  color: #f0f2f3;
+}
+
+a{
+  color: #fff;
+}
+.navbar .getstarted, .navbar .getstarted:focus {
+  padding: 8px 20px;
+  margin-left: 30px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 14px;
+  border: 2px solid #47b2e4;
+  font-weight: 600;
+}
+.navbar .getstarted:hover, .navbar .getstarted:focus:hover {
+  color: #fff;
+  
+}
+
+header{
+  width: 100%;
+  background-color:  rgba(55, 81, 126, 1);
+}
+
+header .container {
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+  height: 60%;
+  margin: auto;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+header img {
+  margin-right: 0;
+  width: 80px;
+  height: 80px;
+  margin-right: 0;
+  padding: 5px 0;
+  position: relative;
+  display: block;
+}
+header nav {
+  display: flex;
+}
+
+header nav ul {
+  display: flex;
+}
+
+header nav ul li {
+  list-style: none;
+}
+
+header nav ul li{
+  text-decoration: none;
+  
+  font-family: 'Roboto', sans-serif ;
+  padding: 2.0rem;
+  transition: all 250ms linear 0s;
+  font-size: 13px;
+  line-height: 0;
+  margin-left: 5px;
+  justify-content: center;
+  text-align: center;
+  color: white !important;
+}
+
+header nav ul li a:hover {
+  color: #31a9e1;
+
+  text-decoration: none;
+
+  transition: 0.6s;
+  margin-top: 6px;
+  
+  top: 2px;
+  border-radius: 10px;
+
+
+}
+
+
+header nav ul li Link{
+  position: relative;
+  animation-name: menu;
+  animation-duration: 1s;
+  transition: 100ms;
+  color: white !important;
+}
+
+@keyframes menu {
+  0%   { left:0px; top: -100px;}
+  100% { left: 0px; top:0px;}
+  
+}
+
+@media (max-width: 630px){
+  html{
+    font-size: 70%;
+  }
+ .hero .container{
+   flex-direction: column;
+   text-align: center;
+ }
+
+ .form-group{
+   display: block;
+ }
+}
+
+@media (max-width: 1120px){
+ 
+   .menu-section nav{
+    display: none;
+  }
+
+  .one,
+  .two,
+  .three{
+    background-color:#ffffff;
+    height: 5px;
+    width: 100%;
+    margin: 6px auto;
+    transition-duration: 0.3s;
+    justify-content: center;
+  }
+  .menu-toggle{
+    width: 40px;
+    height: 30px;
+    margin-right: 20px;
+  }
+
+  /*Fullscreen*/
+  .menu-section.on {
+    
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(40, 58, 90, 0.9);
+    transition: 0.3s;
+    z-index: 999;
+    height: 460px;
+    justify-content: center;
+  }
+
+  .menu-section.on nav{
+    display: block;
+  }
+
+  
+  .menu-section.on .menu-toggle{
+    position: absolute;
+    right: 25px;
+    top: 25px;
+  }
+
+  
+  .menu-section.on .menu-toggle .one{
+    transform: rotate(45deg) translate(7px, 7px);
+    background-color: #fff;
+  }
+
+.menu-section.on .menu-toggle .two{
+  opacity: 0;
+}
+
+  .menu-section.on .menu-toggle .three{
+    transform: rotate(-45deg) translate(8px, -9px);
+    background-color: #fff;
+  }
+
+  .menu-section.on nav ul{
+    text-align: center;
+    display: block;
+  }
+
+  .menu-section.on nav ul{ 
+   transition-duration:  0.5s;
+   font-size: 2.0rem;
+    display: block;
+    color: #fff;
+    padding: 1.8rem;
+  }
+  
+
+  .menu-section.on nav ul .hide{ 
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 0rem;
+     font-size: 1.6rem;
+   }
+
+}
+
+@media (max-width: 320px){
+  #form h3{
+    font-size: 2rem;
+  }
+
+}
